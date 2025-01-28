@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yuzu9x - Shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', sans-serif;
+        }
+
+        body {
+            background-color: #FFF9F9;
+            color: #1A1A1A;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        nav {
+            width: 100%;
+            padding: 1.5rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            gap: clamp(3.5rem, 6vw, 5rem);
+            position: relative;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1A1A1A;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            padding: 0.5rem 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        nav a::before,
+        nav a::after {
+            content: '♥';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #FFB6C1;
+            opacity: 0;
+            transition: all 0.3s ease;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+        }
+
+        nav a::before {
+            left: 0;
+            transform: translate(-25px, -50%);
+        }
+
+        nav a::after {
+            right: 0;
+            transform: translate(25px, -50%);
+        }
+
+        nav a:hover {
+            color: #FFB6C1;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+            transform: translate(-15px, -50%);
+        }
+
+        nav a:hover::after {
+            opacity: 1;
+            transform: translate(15px, -50%);
+        }
+
+        .title-section {
+            text-align: center;
+            margin: 2rem 0 4rem 0;
+            padding: 0 1rem;
+        }
+
+        .title-section h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #1A1A1A;
+            font-weight: 300;
+            letter-spacing: 4px;
+        }
+
+        .portfolio-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .portfolio-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 200px;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 200px;
+            background-color: #FFF;
+            border: 1px solid #FFE4E8;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text-container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            border: 1px solid #FFE4E8;
+            border-radius: 2px;
+            margin-top: 1rem;
+        }
+
+        .text-container h3 {
+            color: #1A1A1A;
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .text-container p {
+            color: #1A1A1A;
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .order-form {
+            background-color: #fff;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 300px;
+            max-width: 100%;
+            margin-top: 3rem;
+        }
+
+        .order-form h2 {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .order-form input, .order-form select, .order-form button {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.6rem 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .order-form button {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .order-form button:hover {
+            background-color: #45a049;
+        }
+
+        .background-accent {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100vh;
+            background-color: #FEF6F6;
+            z-index: -1;
+            clip-path: polygon(100% 0, 100% 100%, 0 100%, 20% 0);
+        }
+
+        .subtle-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(#FFE4E8 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: -2;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-item {
+                width: 45%;
+            }
+
+            .image-container {
+                height: 180px;
+            }
+
+            .order-form {
+                width: 100%;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-item {
+                width: 100%;
+            }
+
+            .image-container {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-accent"></div>
+    <div class="subtle-pattern"></div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="portfolio.html">portfolio</a></li>
+            <li><a href="shop.html">shop</a></li>
+            <li><a href="contact.html">contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="title-section">
+        <h1>yuzu9boutique</h1>
+        <h3>here is a catalog of things i am selling. to order, pls fill out the form below!</h3>
+    </div>
+
+    <!-- Item Listings -->
+    <div class="portfolio-container">
+        <!-- Portfolio Items here (Item 1, Item 2, etc.) -->
+        <div class="portfolio-item">
+            <div class="image-container">
+                <img src="images/kittiesinparis.JPG" alt="Project 1">
+            </div>
+            <div class="text-container">
+                <h3>Item 1</h3>
+                <p>Here is something you can buy. blablablabla</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="portfolio-container">
+        <!-- Portfolio Items here (Item 1, Item 2, etc.) -->
+        <div class="portfolio-item">
+            <div class="image-container">
+                <img src="images/kittiesinparis.JPG" alt="Project 1">
+            </div>
+            <div class="text-container">
+                <h3>Item 1</h3>
+                <p>Here is something you can buy. blablablabla</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="portfolio-container">
+        <!-- Portfolio Items here (Item 1, Item 2, etc.) -->
+        <div class="portfolio-item">
+            <div class="image-container">
+                <img src="images/kittiesinparis.JPG" alt="Project 1">
+            </div>
+            <div class="text-container">
+                <h3>Item 1</h3>
+                <p>Here is something you can buy. blablablabla</p>
+            </div>
+        </div>
+
+    </div>
+    
+
+    <!-- Order Form (in progress)-->
+    <div class="order-form">
+        <h2>Order Form</h2>
+        <form action="https://formspree.io/f/mjvqblkk" method="POST">
+            <label for="email">Your Email</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="variant">Select Variant</label>
+            <select name="variant" id="variant" required>
+                <option value="" disabled selected>Select a variant</option>
+                <option value="Variant 1">Variant 1</option>
+                <option value="Variant 2">Variant 2</option>
+                <option value="Variant 3">Variant 3</option>
+            </select>
+
+            <button type="submit">Submit Order</button>
+        </form>
+    </div>
+</body>
+</html>

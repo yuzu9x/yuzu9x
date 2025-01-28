@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yuzu9x - About</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', sans-serif;
+        }
+
+        body {
+            background-color: #FFF9F9;
+            color: #1A1A1A;
+            line-height: 1.6;
+            min-height: 150vh; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        nav {
+            width: 100%;
+            padding: 1.5rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            gap: clamp(3.5rem, 6vw, 5rem);
+            position: relative;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1A1A1A;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            padding: 0.5rem 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        nav a::before,
+        nav a::after {
+            content: '♥';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #FFB6C1;
+            opacity: 0;
+            transition: all 0.3s ease;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+        }
+
+        nav a::before {
+            left: 0;
+            transform: translate(-25px, -50%);
+        }
+
+        nav a::after {
+            right: 0;
+            transform: translate(25px, -50%);
+        }
+
+        nav a:hover {
+            color: #FFB6C1;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+            transform: translate(-15px, -50%);
+        }
+
+        nav a:hover::after {
+            opacity: 1;
+            transform: translate(15px, -50%);
+        }
+
+        .title-section {
+            text-align: center;
+            margin: 2rem 0 4rem 0;
+            padding: 0 1rem;
+        }
+
+        .title-section h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #1A1A1A;
+            font-weight: 300;
+            letter-spacing: 4px;
+        }
+
+        .content-container {
+            display: flex;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            align-items: flex-start;
+        }
+
+        .image-container {
+            flex-shrink: 0;
+            width: 300px;
+            height: 300px;
+            background-color: #FFF;
+            border: 1px solid #FFE4E8;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text-container {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 2rem;
+            border: 1px solid #FFE4E8;
+            border-radius: 2px;
+            max-width: 600px;
+        }
+
+        .text-container p {
+            color: #1A1A1A;
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-size: clamp(0.75rem, 2vw, 0.85rem); 
+            margin-bottom: 1rem;
+        }
+
+        .background-accent {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100vh;
+            background-color: #FEF6F6;
+            z-index: -1;
+            clip-path: polygon(100% 0, 100% 100%, 0 100%, 20% 0);
+        }
+
+        .subtle-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(#FFE4E8 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: -2;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                padding: 0.5rem 1.5rem;
+            }
+
+            .content-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .image-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .text-container {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 320px) {
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+            }
+
+            .content-container {
+                padding: 0 1rem;
+            }
+
+            .image-container {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        /* Footer styles */
+        footer {
+            width: 100%;
+            background-color: #1A1A1A;
+            color: #FFF;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            display: none; 
+            transition: all 0.3s ease;
+        }
+
+        footer.visible {
+            display: block; 
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        footer p a {
+            color: #FFB6C1;
+            text-decoration: none;
+        }
+
+        footer p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-accent"></div>
+    <div class="subtle-pattern"></div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="portfolio.html">portfolio</a></li>
+            <li><a href="shop.html">shop</a></li>
+            <li><a href="contact.html">contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="title-section">
+        <h1>about</h1>
+    </div>
+
+    <div class="content-container">
+        <div class="image-container">
+            <img src="images/yuzu9x.jpg" alt="my face">
+        </div>
+        <div class="text-container">
+            <p>Dear Reader,</p>
+            <p>Hellooo...I'm Melisa and this is my digital portfolio~</p>
+            <p>I was born and raised in NYC and have had an affinity for art for as long as I can remember. I love drawing and working with various mediums, both traditional and non-trad. I create art for me and those alike, and believe that consistency is a trustworthy expression of ones true self.</p>
+                
+            <p>While I enjoy painting, sketching, and all things alike, I love exploring more unconventional mediums too such as nail art, cake decoration, soft structures, and 3D modeling.</p>
+                
+            <p>I think art is incredibly important as it surrounds us in our daily lives and can heavily influence our feelings and thoughts. I hope I can help more people come to this understanding through my time.</p>
+                
+            <p>Love,</p>
+            <p>Melisa</p>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+        <div class="footer-container">
+            <p>&copy; <span id="current-year"></span> yuzu9x. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set the current year in the footer dynamically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Detect scroll position to toggle footer visibility
+        window.addEventListener('scroll', function() {
+            const footer = document.getElementById('footer');
+            if (window.scrollY > 200) {  // Adjust scroll threshold as needed
+                footer.classList.add('visible');
+            } else {
+                footer.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>
