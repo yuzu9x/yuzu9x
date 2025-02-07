@@ -213,22 +213,16 @@
             }
         }
 
-        /* Footer styles */
         footer {
-            width: 100%;
-            background-color: #1A1A1A;
-            color: #FFF;
+            background-color: #FEF6F6;
+            color: #000000;
             text-align: center;
             padding: 1rem;
             position: fixed;
             bottom: 0;
             left: 0;
-            display: none; 
-            transition: all 0.3s ease;
-        }
-
-        footer.visible {
-            display: block; 
+            width: 100%;
+            
         }
 
         .footer-container {
@@ -241,15 +235,7 @@
             font-weight: 300;
             letter-spacing: 1px;
         }
-
-        footer p a {
-            color: #FFB6C1;
-            text-decoration: none;
-        }
-
-        footer p a:hover {
-            text-decoration: underline;
-        }
+        
     </style>
 </head>
 <body>
@@ -293,23 +279,9 @@
     <!-- Footer Section -->
     <footer id="footer">
         <div class="footer-container">
-            <p>&copy; <span id="current-year"></span> yuzu9x. All Rights Reserved.</p>
+            <p>© yuzu9x. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <script>
-        // Set the current year in the footer dynamically
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // Detect scroll position to toggle footer visibility
-        window.addEventListener('scroll', function() {
-            const footer = document.getElementById('footer');
-            if (window.scrollY > 200) {  // Adjust scroll threshold as needed
-                footer.classList.add('visible');
-            } else {
-                footer.classList.remove('visible');
-            }
-        });
-    </script>
 </body>
 </html>

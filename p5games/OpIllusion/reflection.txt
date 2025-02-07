@@ -1,0 +1,6 @@
+Melisa Li
+
+I approached this assignment worried about the animation part but found the tutorials linked to be kind of helpful. When I initially thought of creating an optical illusion, I had the very stereotypical spiraling circle in mind. I wanted to do something like that but in a kind of more creative way so I did this ->
+The spirals remind me of a water droplet creating rings in the water, so I made the colors kind of similar to "water" and also made a little fish cursor. I thought it would also be cute if it had trails of bubbles behind it. I was also going to make the bubbles random sizes but I go too lazy. I think the fish is cute hehe.
+
+Not sure how my optical illusion would be deployed in the world around me but when making this I kept thinking about the bed-stuy fish pond. Maybe if they made a website for that awesome one-of-a-kind landmark it could have a little fish mouse cursor with bubbles and an animated water background. Pretty awesome. 

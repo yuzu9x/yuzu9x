@@ -92,6 +92,8 @@
             text-align: center;
             margin: 2rem 0 4rem 0;
             padding: 0 1rem;
+
+
         }
 
         .title-section h1 {
@@ -100,6 +102,8 @@
             font-weight: 300;
             letter-spacing: 4px;
         }
+
+        
 
         .content-container {
             display: flex;
@@ -142,17 +146,6 @@
             letter-spacing: 1px;
             font-size: clamp(0.75rem, 2vw, 0.85rem); 
             margin-bottom: 1rem;
-        }
-
-        .background-accent {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100vh;
-            background-color: #FEF6F6;
-            z-index: -1;
-            clip-path: polygon(100% 0, 100% 100%, 0 100%, 20% 0);
         }
 
         .subtle-pattern {
@@ -213,22 +206,16 @@
             }
         }
 
-        /* Footer styles */
         footer {
-            width: 100%;
-            background-color: #1A1A1A;
-            color: #FFF;
+            background-color: #FEF6F6;
+            color: #000000;
             text-align: center;
             padding: 1rem;
             position: fixed;
             bottom: 0;
             left: 0;
-            display: none; 
-            transition: all 0.3s ease;
-        }
-
-        footer.visible {
-            display: block; 
+            width: 100%;
+            
         }
 
         .footer-container {
@@ -242,13 +229,86 @@
             letter-spacing: 1px;
         }
 
-        footer p a {
-            color: #FFB6C1;
+
+        /* My head hurts. There is so much code. This is the css code for my CSS Grid. Kill me */
+        .parsons-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 200px);
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem auto;
+            width: fit-content;
+        }
+
+        .parsons-grid-item {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            border: 1px solid #FFE4E8;
+            border-radius: 2px;
+            overflow: hidden;
+            background-color: #FFF;
+        }
+
+        .parsons-grid-item a {
+            display: block;
+            width: 100%;
+            height: 100%;
             text-decoration: none;
         }
 
-        footer p a:hover {
-            text-decoration: underline;
+        .parsons-grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .parsons-grid-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .parsons-grid-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 0.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .parsons-grid-item:hover .parsons-grid-overlay {
+            transform: translateY(0);
+        }
+
+        .parsons-grid-overlay span {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            font-weight: 300;
+            color: #ffffff;
+        }
+
+        /* Responsiveness Shenanigans */
+        @media (max-width: 768px) {
+            .parsons-projects-grid {
+                grid-template-columns: repeat(2, 180px);
+                gap: 1.5rem;
+            }
+            
+            .parsons-grid-item {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .parsons-projects-grid {
+                grid-template-columns: 200px;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
@@ -268,32 +328,161 @@
         </ul>
     </nav>
 
+    <!-- CSS GRID for my Projects, change out cover art for each assignment -->
     <div class="title-section">
         <h1>parsons projects</h1>
+        <h3>Spring 2025</h3>
+
+        <!-- Spring 2025 Section-->
+        <div class="parsons-projects-grid">
+            <div class="parsons-grid-item">
+                <a href="Spring2025Projects/1_parsons.html">
+                    <img src="images/projectcovers/week3_cover.png" alt="Project 1">
+                    <div class="parsons-grid-overlay">
+                        <span>Week 3: Portfolio Website</span>
+                    </div>
+                </a>
+            </div>
+            <div class="parsons-grid-item">
+                <a href="Spring2025Projects/2_parsons.html">
+                    <img src="images/projectcovers/week4_cover.png" alt="Project 2">
+                    <div class="parsons-grid-overlay">
+                        <span>Week 4: Interactive Typography</span>
+                    </div>
+                </a>
+            </div>
+            <div class="parsons-grid-item">
+                <a href="Spring2025Projects/3_parsons.html">
+                    <img src="/api/placeholder/300/300" alt="Project 3">
+                    <div class="parsons-grid-overlay">
+                        <span>project 3</span>
+                    </div>
+                </a>
+            </div>
+            <div class="parsons-grid-item">
+                <a href="Spring2025Projects/4_parsons.html">
+                    <img src="/api/placeholder/300/300" alt="Project 4">
+                    <div class="parsons-grid-overlay">
+                        <span>project 4</span>
+                    </div>
+                </a>
+            </div>
+            <div class="parsons-grid-item">
+                <a href="Spring2025Projects/5_parsons.html">
+                    <img src="/api/placeholder/300/300" alt="Project 5">
+                    <div class="parsons-grid-overlay">
+                        <span>project 5</span>
+                    </div>
+                </a>
+            </div>
+            <div class="parsons-grid-item">
+                <a href="Spring2025Projects/6_parsons.html">
+                    <img src="/api/placeholder/300/300" alt="Project 6">
+                    <div class="parsons-grid-overlay">
+                        <span>project 6</span>
+                    </div>
+                </a>
+            </div>
+            <div class="parsons-grid-item">
+                <a href="Spring2025Projects/7_parsons.html">
+                    <img src="/api/placeholder/300/300" alt="Project 7">
+                    <div class="parsons-grid-overlay">
+                        <span>project 7</span>
+                    </div>
+                </a>
+            </div>
+            <div class="parsons-grid-item">
+                <a href="Spring2025Projects/8_parsons.html">
+                    <img src="/api/placeholder/300/300" alt="Project 8">
+                    <div class="parsons-grid-overlay">
+                        <span>project 8</span>
+                    </div>
+                </a>
+            </div>
+            <div class="parsons-grid-item">
+                <a href="Spring2025Projects/9_parsons.html">
+                    <img src="/api/placeholder/300/300" alt="Project 9">
+                    <div class="parsons-grid-overlay">
+                        <span>project 9</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
     </div>
+
+    <!-- Fall 2024 Section-->
+    <h3 style="margin-top: 4rem; margin-bottom: 2rem;">Fall 2024</h3>
+
+    <div class="parsons-projects-grid">
+        
+        <div class="parsons-grid-item">
+            <a href="Fall2024Projects/10_parsons.html">
+                <img src="images/projectcovers/AutoBioGame.gif" alt="Project 10">
+                <div class="parsons-grid-overlay">
+                    <span>Autobiographical Game</span>
+                </div>
+            </a>
+        </div>
+        
+        <div class="parsons-grid-item">
+            <a href="Fall2024Projects/11_parsons.html">
+                <img src="images/projectcovers/AutoBioGame.gif" alt="Project 10">
+                <div class="parsons-grid-overlay">
+                    <span>Experimental Clock</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="parsons-grid-item">
+            <a href="Fall2024Projects/12_parsons.html">
+                <img src="images/projectcovers/AutoBioGame.gif" alt="Project 10">
+                <div class="parsons-grid-overlay">
+                    <span>Exquisite Corpse</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="parsons-grid-item">
+            <a href="Fall2024Projects/13_parsons.html">
+                <img src="images/projectcovers/AutoBioGame.gif" alt="Project 10">
+                <div class="parsons-grid-overlay">
+                    <span>Face Generator</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="parsons-grid-item">
+            <a href="Fall2024Projects/14_parsons.html">
+                <img src="images/projectcovers/AutoBioGame.gif" alt="Project 10">
+                <div class="parsons-grid-overlay">
+                    <span>Lost & Found</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="parsons-grid-item">
+            <a href="Fall2024Projects/15_parsons.html">
+                <img src="images/projectcovers/AutoBioGame.gif" alt="Project 10">
+                <div class="parsons-grid-overlay">
+                    <span>Optical Illusion</span>
+                </div>
+            </a>
+        </div>
+
+    
+
+    </div>
+</div>
 
     
 
     <!-- Footer Section -->
     <footer id="footer">
         <div class="footer-container">
-            <p>&copy; <span id="current-year"></span> yuzu9x. All Rights Reserved.</p>
+            <p>© yuzu9x. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <script>
-        // Set the current year in the footer dynamically
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // Detect scroll position to toggle footer visibility
-        window.addEventListener('scroll', function() {
-            const footer = document.getElementById('footer');
-            if (window.scrollY > 200) {  // Adjust scroll threshold as needed
-                footer.classList.add('visible');
-            } else {
-                footer.classList.remove('visible');
-            }
-        });
-    </script>
 </body>
 </html>

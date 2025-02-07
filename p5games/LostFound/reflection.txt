@@ -1,0 +1,8 @@
+Melisa Li
+Partner: Michelle Lin
+
+Description: 
+"So I used to have this samsung phone that I regret losing because it was my very first phone and I believe I bought that phone with my own money, it was silverish gold and it didn’t look like a rectangle exactly more so a rounded edge rectangle. It still had the home button compared to samsung phones now, and it was scratched very badly. Also the battery SUCKED, it had a minecraft flower background and everything about the phone just screamed oh it’s super white and pastel. I regret losing it because I used to do small animation projects on there no matter how shitty and laggy the phone is and I wish to access them again because sometimes it’s nice to look at old stuff."
+
+Reflection:
+When approaching this assignment I was a bit worried about how I would be able to execute the details of the phone. I didn't even attempt the "minecraft flower background" I knew I did not have the patience to code it all. I knew I definitely wanted to execute the "metallic" effect of the gold color, so I did it in a very rudimentary way by layering multiple rectangles of different shades on top of each other. As for the shape of the phone, it was extremely tedious to get everything to line up perfectly to get the rounded corners but I am happy with the result. I was planning on doing the same with the home button but I did not have enough fuel to get me to do so. I think it's pretty obvious this is a phone (specifically a samsung one too) so...hope this is good.

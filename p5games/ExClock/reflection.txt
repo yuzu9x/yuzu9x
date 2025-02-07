@@ -1,0 +1,5 @@
+I decided to code an oven with a cake inside, so when you hit the space bar, you can see the cake rise while it "bakes". The sequence is pretty short but it works, and I also rounded the cake so it really looks like a cake doming as it rises!
+
+This is novel to me because I have a side hustle where I make custom cakes, and sometimes I have to work schedule around orders I take. I wanted to do a "clock" where a cake rises because often times when fulfilling an order, the time in which the cakes are in the oven and are baking is when I do my other miscillaneous tasks. 
+
+I think throughout this process I just learned to be a lot more patient especially with creating the graphics for these mini projects- I like how even with limitations to by ability there are still certain cool things i'm able to execute. 

@@ -1,0 +1,8 @@
+i don't remember their names but one is an asian guy and the other one is the only white guy in the class
+
+my original sketch was an anime girl who had the body of a stereotypical redneck american with a beer belly and America themed tattoos, and hairy bare legs to finish it off. I kind of based her design off one of the characters of this anime called Pop Team Epic, but a redneck rendition. 
+in the exquisite corpse, i used her head but her torso belonged to one of my groupmates' characters where this guy is holding a lollipop. the feet portion of her new form belongs to a penguin.
+
+the new backstory I came up with is that this character is secretly a fat penguin disguised as a person because they aren't allowed to have lollipops but are using their disguise to get away with their abnormally excessive lollipop consumption
+
+This assignment was a lot easier compared to the last few because this one just implemented creating our own functions (then adding arguments and parameters etc) but was a lot more visually inclined and didn't have any inner workings to it so to speak. I must say though, using rudimentary shapes to create graphics is super annoying and tedious and my final design came out a lot simpler than I originally intended.

@@ -1,0 +1,4 @@
+nI wanted to do a random face generator using japanese emoticons and typical text emoticons I commonly use when I type on a digital platform. My "design sketches" were just me writing ":3, :D, etc." with pen on paper- I was pretty set on what I wanted to do when the project was initially assigned so there were not many changes made. I kept the design of the project pretty simple because it was faces made of text and I figured I should keep that element throughout. 
+I tried to incorporate a drawing brush using the mouse pointer, however couldn't figure out on my own how to have that function combined with the randomized faces at the same time other wise the faces would stack on top of each other gradually.
+
+I think I enjoy doing silly goofy things and trolling with my homework lol. I thought this idea would be pretty cute and kind of silly and also especially since it ties into my first reading response.
