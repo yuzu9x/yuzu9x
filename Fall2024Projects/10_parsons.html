@@ -105,14 +105,27 @@
             letter-spacing: 4px;
         }
 
-        /* New Game Container Styles */
-        #game-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 2rem 0;
+        .project {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 0px;
+            padding: 15px;
+            text-align: center;
+            max-width: width;
             width: 100%;
-            min-height: 600px; /* Adjust based on your game's height */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .project canvas, .project iframe {
+            max-width: 100%;
+        }
+        
+        .project-description {
+            margin-top: 15px;
+            font-style: italic;
+            color: #333;
+            text-align: center;
         }
 
         .content-container {
@@ -192,57 +205,15 @@
             letter-spacing: 1px;
         }
 
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 2rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            nav a {
-                padding: 0.5rem 1.5rem;
-            }
-
-            .content-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 2rem;
-            }
-
-            .image-container {
-                width: 250px;
-                height: 250px;
-            }
-
-            .text-container {
-                padding: 1.5rem;
-            }
+        
+        #testing canvas {
+            visibility: visible;
         }
 
-        @media (max-width: 320px) {
-            nav ul {
-                gap: 1.5rem;
-            }
-
-            nav a {
-                padding: 0.5rem 1rem;
-            }
-
-            .content-container {
-                padding: 0 1rem;
-            }
-
-            .image-container {
-                width: 200px;
-                height: 200px;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="background-accent"></div>
-    <div class="subtle-pattern"></div>
-
+    
     <!-- Navigation Bar -->
     <nav>
         <ul>
@@ -256,11 +227,15 @@
     </nav>
 
     <div class="title-section">
-        <h1>Autobiographical Game</h1>
+        <div class="project">
+                
+            <h2>Autobiographical Game</h2>
+            
+            <p class="project-description">Attempt at making a game with various scene changes modeled after a JRPG story game. Explores scene transitions and basic game mechanics.</p>
+            <div id="testing"></div>
+        </div>
     </div>
 
-    <!-- Added container for game-->
-    <div id="game-container"></div>
 
     <!-- Footer Section -->
     <footer id="footer">
@@ -270,14 +245,23 @@
     </footer>
 
     <!-- Game Scripts -->
+    <script src="p5games/AutoBioGame/sketch.js"></script>
     <script src="p5games/AutoBioGame/Player.js"></script>
     <script src="p5games/AutoBioGame/TitleScene.js"></script>
     <script src="p5games/AutoBioGame/Wall.js"></script>
+
     <script src="p5games/AutoBioGame/Scene1.js"></script>
     <script src="p5games/AutoBioGame/Scene2.js"></script>
     <script src="p5games/AutoBioGame/Scene3.js"></script>
     <script src="p5games/AutoBioGame/Scene4.js"></script>
+
     <script src="p5games/AutoBioGame/EndScene.js"></script>
-    <script src="p5games/AutoBioGame/sketch.js"></script>
+
+    <script src="p5games/AutoBioGame/p5.js"></script>
+    <script src="p5games/AutoBioGame/p5.sound.min.js"></script>
+   
+
+
+    
 </body>
 </html>
