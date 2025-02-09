@@ -2,8 +2,8 @@ let currentFace = "";
 const faces = [':3', ':D', '（＾ω＾） ', ':p', ';-;', 'T_T', '>:3', '>:D', '(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄', '(*´_ゝ｀)', '(◕ㅅ◕✿)', '(≧▽≦)', '乁(ツ)ㄏ'];
 
 function setup() {
-    createCanvas(400, 600) .parent("testing"); 
-    canvas.parent('sketch-holder'); 
+    createCanvas(400, 600) .parent("game-container"); 
+    
     createCanvas(400, 400);
     textSize(32);
     background(250);

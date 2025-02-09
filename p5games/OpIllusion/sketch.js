@@ -5,7 +5,7 @@ let trails = []; // Array to store the trails
 
 // Import fish image :)
 function preload() {
-  img = loadImage('p5games/OpIllusion/pixil-frame-0.png', 
+  img = loadImage('../p5games/OpIllusion/pixil-frame-0.png', 
     () => console.log('Image loaded successfully'), 
     () => console.error('Failed to load image') // tells me if it worked or not xD
   ); 
@@ -13,7 +13,7 @@ function preload() {
 
 function setup() {
   noCursor()
-  createCanvas(600, 600).parent("testing");
+  createCanvas(600, 600).parent("game-container");
   strokeWeight(4); // Water ripple thickness
 }
 

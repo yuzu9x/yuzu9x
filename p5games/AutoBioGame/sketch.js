@@ -48,7 +48,6 @@ function preload() {
   scene3Background = loadImage("../p5games/AutoBioGame/assets/scene3bg.jpg");
   scene4Background = loadImage("../p5games/AutoBioGame/assets/scene4bg.jpg");
   
-  
   titleText = loadImage("../p5games/AutoBioGame/assets/arecordofmydreams.png");
   arrowKeys = loadImage("../p5games/AutoBioGame/assets/arrowkeys.png");
   spaceBar = loadImage("../p5games/AutoBioGame/assets/spacebar.png");

@@ -4,7 +4,7 @@ let maxHeight = 100; // maximum height of the cake
 let rising = false; // if the cake is rising
 
 function setup() {
-  createCanvas(600, 600) .parent("testing");
+  createCanvas(600, 600).parent("game-container");
   noStroke();
 }
 

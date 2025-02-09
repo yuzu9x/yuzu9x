@@ -1,6 +1,6 @@
 function setup() {
 
-  createCanvas(400, 400).parent("testing");
+  createCanvas(400, 400).parent("game-container");
   background(126, 113, 145);
   
 }

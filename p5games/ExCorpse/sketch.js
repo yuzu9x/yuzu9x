@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(400, 600).parent("testing");
+  createCanvas(400, 600).parent("game-container");
 }
 
 function draw() {

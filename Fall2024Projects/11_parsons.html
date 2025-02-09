@@ -105,14 +105,27 @@
             letter-spacing: 4px;
         }
 
-        /* New Game Container Styles */
-        #game-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 2rem 0;
+        .project {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 0px;
+            padding: 15px;
+            text-align: center;
+            max-width: width;
             width: 100%;
-            min-height: 600px; /* Adjust based on your game's height */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .project canvas, .project iframe {
+            max-width: 100%;
+        }
+        
+        .project-description {
+            margin-top: 15px;
+            font-style: italic;
+            color: #333;
+            text-align: center;
         }
 
         .content-container {
@@ -192,56 +205,15 @@
             letter-spacing: 1px;
         }
 
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 2rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            nav a {
-                padding: 0.5rem 1.5rem;
-            }
-
-            .content-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 2rem;
-            }
-
-            .image-container {
-                width: 250px;
-                height: 250px;
-            }
-
-            .text-container {
-                padding: 1.5rem;
-            }
+        
+        #testing canvas {
+            visibility: visible;
         }
 
-        @media (max-width: 320px) {
-            nav ul {
-                gap: 1.5rem;
-            }
-
-            nav a {
-                padding: 0.5rem 1rem;
-            }
-
-            .content-container {
-                padding: 0 1rem;
-            }
-
-            .image-container {
-                width: 200px;
-                height: 200px;
-            }
-        }
     </style>
 </head>
 <body>
-   
-
+    
     <!-- Navigation Bar -->
     <nav>
         <ul>
@@ -255,11 +227,15 @@
     </nav>
 
     <div class="title-section">
-        <h1>Experimental Clock</h1>
+        <div class="project">
+                
+            <h2>Experimental Clock</h2>
+            
+            <p class="project-description">I made an oven themed "clock" for this assignment.</p>
+            <div id="game-container"></div>
+        </div>
     </div>
 
-    <!-- Added container for game-->
-    <div id="game-container"></div>
 
     <!-- Footer Section -->
     <footer id="footer">
@@ -269,6 +245,10 @@
     </footer>
 
     <!-- Game Scripts -->
-    <script src="sketch.js"></script>
+    <script src="../p5games/ExClock/sketch.js"></script>
+   
+
+
+    
 </body>
 </html>
