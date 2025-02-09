@@ -35,31 +35,31 @@ let frameHeight = 50; // Height of each frame
 function preload() {
   
   // bg music
-  bgMusic = loadSound("p5games/AutoBioGame/visualelm/stylesavvy_rosietheme.mp3");
+  bgMusic = loadSound("../p5games/AutoBioGame/visualelm/stylesavvy_rosietheme.mp3");
   
   
   // Font
-  font = loadFont('p5games/AutoBioGame/visualelm/GothicPixels.ttf');
+  font = loadFont('../p5games/AutoBioGame/visualelm/GothicPixels.ttf');
   
   // Background images
-  titleSceneBackground = loadImage("p5games/AutoBioGame/assets/title.png");
-  scene1Background = loadImage("p5games/AutoBioGame/assets/scene1bg.png");
-  scene2Background = loadImage("p5games/AutoBioGame/assets/scene2bg.jpg");
-  scene3Background = loadImage("p5games/AutoBioGame/assets/scene3bg.jpg");
-  scene4Background = loadImage("p5games/AutoBioGame/assets/scene4bg.jpg");
-  // endSceneBackground = loadImage();
+  titleSceneBackground = loadImage("../p5games/AutoBioGame/assets/title.png");
+  scene1Background = loadImage("../p5games/AutoBioGame/assets/scene1bg.png");
+  scene2Background = loadImage("../p5games/AutoBioGame/assets/scene2bg.jpg");
+  scene3Background = loadImage("../p5games/AutoBioGame/assets/scene3bg.jpg");
+  scene4Background = loadImage("../p5games/AutoBioGame/assets/scene4bg.jpg");
   
-  titleText = loadImage("p5games/AutoBioGame/assets/arecordofmydreams.png");
-  arrowKeys = loadImage("p5games/AutoBioGame/assets/arrowkeys.png");
-  spaceBar = loadImage("p5games/AutoBioGame/assets/spacebar.png");
+  
+  titleText = loadImage("../p5games/AutoBioGame/assets/arecordofmydreams.png");
+  arrowKeys = loadImage("../p5games/AutoBioGame/assets/arrowkeys.png");
+  spaceBar = loadImage("../p5games/AutoBioGame/assets/spacebar.png");
   
   // Load sprite sheet for the player
-  playerSpriteSheet = loadImage("p5games/AutoBioGame/maincharacter.png");
+  playerSpriteSheet = loadImage("../p5games/AutoBioGame/maincharacter.png");
 }
 
 function setup() {
-  createCanvas(600, 400).parent("testing");
-  canvas.parent('game-container');
+  createCanvas(600, 400).parent("game-container");
+  
   noSmooth();
 
    bgMusic.loop();
