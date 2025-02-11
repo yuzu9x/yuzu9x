@@ -1,5 +1,5 @@
 let font;
-let canvas1, canvas2, canvas3;
+// let canvas1, canvas2, canvas3;
 
 function preload() {
   font = loadFont('/fonts/ComicSans.ttf');
