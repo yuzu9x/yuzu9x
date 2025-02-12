@@ -2,7 +2,7 @@ let font;
 // let canvas1, canvas2, canvas3;
 
 function preload() {
-  font = loadFont('/fonts/ComicSans.ttf');
+  font = loadFont('../fonts/ComicSans.ttf');
 }
 
 function setup() {
