@@ -4,6 +4,8 @@ let points2;
 let isInverted = false;
 let lastInvertTime = 0;
 
+let Angel1;
+
 function preload() {
     
     font = loadFont('./fonts/Angel wish.ttf');   
@@ -12,6 +14,15 @@ function preload() {
 }
 
 function setup() {
+  // Angel text with points that gradually float around randomly
+  Angel1 = new Angel(50,50,50);
+
+  // Angel text with a reversing gradient effect thing
+
+
+  // Angel text with color change effect when mouse hovers over it
+  
+
     // First Iteration - Canvas 1
     canvas1 = createCanvas(300, 450);
     canvas1.parent('canvas1');
@@ -42,8 +53,25 @@ function setup() {
 }
 
 function draw() {
+  // Angel Class 1
+  Angel1.show();
+
+  class Angel1 {
+    constructor(x, y, size) {
+      this.x = x;
+      this.y = y;
+      this.size = size;
+    }
+
+    show() {
+      textAlign(CENTER, CENTER);
+      textSize(this.size);
+      text('angel', this.x, this.y);
+    }
+  }
+
     // Timer
-    if (millis() - lastInvertTime > 500) {
+    if (millis(200) - lastInvertTime > 500) {
         isInverted = !isInverted;
         lastInvertTime = millis();
     }
