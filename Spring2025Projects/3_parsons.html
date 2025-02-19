@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
-
+    
     <title>yuzu9x - Parsons</title>
     <style>
         * {
@@ -55,48 +54,10 @@
             display: inline-block;
         }
 
-        nav a::before,
-        nav a::after {
-            content: '♥';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #FFB6C1;
-            opacity: 0;
-            transition: all 0.3s ease;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-        }
-
-        nav a::before {
-            left: 0;
-            transform: translate(-25px, -50%);
-        }
-
-        nav a::after {
-            right: 0;
-            transform: translate(25px, -50%);
-        }
-
-        nav a:hover {
-            color: #FFB6C1;
-        }
-
-        nav a:hover::before {
-            opacity: 1;
-            transform: translate(-15px, -50%);
-        }
-
-        nav a:hover::after {
-            opacity: 1;
-            transform: translate(15px, -50%);
-        }
-
         .title-section {
             text-align: center;
             margin: 2rem 0 4rem 0;
             padding: 0 1rem;
-
-
         }
 
         .title-section h1 {
@@ -104,109 +65,6 @@
             color: #1A1A1A;
             font-weight: 300;
             letter-spacing: 4px;
-        }
-
-        
-
-        .content-container {
-            display: flex;
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            align-items: flex-start;
-        }
-
-        .image-container {
-            flex-shrink: 0;
-            width: 300px;
-            height: 300px;
-            background-color: #FFF;
-            border: 1px solid #FFE4E8;
-            border-radius: 2px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .text-container {
-            flex: 1;
-            background-color: rgba(255, 255, 255, 0.5);
-            padding: 2rem;
-            border: 1px solid #FFE4E8;
-            border-radius: 2px;
-            max-width: 600px;
-        }
-
-        .text-container p {
-            color: #1A1A1A;
-            font-weight: 300;
-            letter-spacing: 1px;
-            font-size: clamp(0.75rem, 2vw, 0.85rem); 
-            margin-bottom: 1rem;
-        }
-
-        .subtle-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(#FFE4E8 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.1;
-            z-index: -2;
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 2rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            nav a {
-                padding: 0.5rem 1.5rem;
-            }
-
-            .content-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 2rem;
-            }
-
-            .image-container {
-                width: 250px;
-                height: 250px;
-            }
-
-            .text-container {
-                padding: 1.5rem;
-            }
-        }
-
-        @media (max-width: 320px) {
-            nav ul {
-                gap: 1.5rem;
-            }
-
-            nav a {
-                padding: 0.5rem 1rem;
-            }
-
-            .content-container {
-                padding: 0 1rem;
-            }
-
-            .image-container {
-                width: 200px;
-                height: 200px;
-            }
         }
 
         footer {
@@ -218,7 +76,6 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            
         }
 
         .footer-container {
@@ -232,30 +89,51 @@
             letter-spacing: 1px;
         }
 
-
-        /* Responsiveness Shenanigans */
-        @media (max-width: 768px) {
-            .parsons-projects-grid {
-                grid-template-columns: repeat(2, 180px);
-                gap: 1.5rem;
-            }
-            
-            .parsons-grid-item {
-                width: 180px;
-                height: 180px;
-            }
+        .canvas-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            flex-wrap: wrap;
+            padding-bottom: 60px;
+            margin-bottom: 60px;
         }
 
-        @media (max-width: 480px) {
-            .parsons-projects-grid {
-                grid-template-columns: 200px;
-                gap: 1rem;
+        .canvas-container {
+            flex: 1;
+            min-width: 300px;
+            height: 500px; 
+            background: white;
+            padding: 1rem;
+            border: 1px solid #FFE4E8;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden; 
+        }
+
+       
+        #canvas3 {
+            display: none; 
+        }
+
+        @media (max-width: 768px) {
+            .canvas-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .canvas-container {
+                width: 100%;
+                max-width: 500px;
             }
         }
     </style>
 </head>
 <body>
-    
 
     <!-- Navigation Bar -->
     <nav>
@@ -269,15 +147,20 @@
         </ul>
     </nav>
 
-
     <div class="title-section">
-        <h1>week 4: Text Prototypes</h1>
-
-        
-
+        <h1>week 5: Text Prototypes</h1>
+        <p>3 Words I Chose: Angel, Love, and Rose :3</p>
     </div>
 
-    
+    <!-- Canvas Containers to put my iterations -->
+    <div class="canvas-row">
+        <div class="canvas-container" id="canvas1"></div>
+        <div class="canvas-container" id="canvas4"></div>
+        <div class="canvas-container" id="canvas7"></div>
+    </div>
+
+    <!-- amke a hidden container for canvas3 -->
+    <div id="canvas3" style="display:none;"></div>
 
     <!-- Footer Section -->
     <footer id="footer">
@@ -286,16 +169,10 @@
         </div>
     </footer>
 
-    
-    <script src="./3_parsons.js"></script>
-    
-    
-    <div id="canvas1"></div>
-    <div id="canvas2"></div>
-    <div id="canvas3"></div>
-    <div id="canvas4"></div>
-
-    
+    <!-- Scripts for my word iterations -->
+    <script src="./3_parsons_angel.js"></script>
+    <script src="./3_parsons_love.js"></script>
+    <script src="./3_parsons_rose.js"></script>
 
 </body>
 </html>
