@@ -8,9 +8,9 @@ let Angel1;
 
 function preload() {
     
-    font = loadFont('./fonts/Angel wish.ttf');   
-    font2 = loadFont('./fonts/King Jola.ttf');   
-    font3 = loadFont('./fonts/Ransom.ttf');      
+    font = loadFont('../fonts/Angel wish.ttf');   
+    font2 = loadFont('../fonts/King Jola.ttf');   
+    font3 = loadFont('../fonts/Ransom.ttf');      
 }
 
 function setup() {
