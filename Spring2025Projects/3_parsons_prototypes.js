@@ -3,7 +3,7 @@
 let font, font2, font3;
 let points1, points2, points3, points4, points5, points6, points7, points8, points9;  
 let gradientPhase = 0;
-let gradientSpeed = 0.02;
+let gradientSpeed = 0.01;
 let resetPoints = false;
 let floatingAngels = []; 
 
