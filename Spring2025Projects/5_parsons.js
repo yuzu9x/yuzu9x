@@ -1,4 +1,5 @@
 // Final Text Iterations
+// Do you like the petals and the bubbly mouse effect
 let font, font2, font3;
 let points1, points2, points3;
 let gradientPhase = 0;
