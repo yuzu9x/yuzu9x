@@ -1,0 +1,181 @@
+<!--Text Final--> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
+    
+    <title>yuzu9x - Parsons</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', sans-serif;
+        }
+
+        body {
+            background-color: #FFF9F9;
+            color: #1A1A1A;
+            line-height: 1.6;
+            min-height: 150vh; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        nav {
+            width: 100%;
+            padding: 1.5rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            gap: clamp(3.5rem, 6vw, 5rem);
+            position: relative;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1A1A1A;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            padding: 0.5rem 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .title-section {
+            text-align: center;
+            margin: 2rem 0 4rem 0;
+            padding: 0 1rem;
+        }
+
+        .title-section h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #1A1A1A;
+            font-weight: 300;
+            letter-spacing: 4px;
+        }
+
+        footer {
+            background-color: #FEF6F6;
+            color: #000000;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .canvas-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            flex-wrap: wrap;
+            padding-bottom: 60px;
+            margin-bottom: 60px;
+        }
+
+        .canvas-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            height: 600px; 
+            background: rgb(0, 0, 0);
+            padding: 1rem;
+            border: 3px dotted #FFE4E8;
+            border-radius: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden; 
+        }
+
+       
+        #canvas3 {
+            display: none; 
+        }
+
+        @media (max-width: 768px) {
+            .canvas-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .canvas-container {
+                width: 100%;
+                max-width: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="../index.html">home</a></li>
+            <li><a href="../about.html">about</a></li>
+            <li><a href="../portfolio.html">portfolio</a></li>
+            <li><a href="../shop.html">shop</a></li>
+            <li><a href="../parsons.html">parsons</a></li>
+            <li><a href="../contact.html">contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="title-section">
+        <h1>week 6: Text Final</h1>
+        
+    </div>
+
+    <!-- Canvas Containers to put my iterations -->
+     <!-- Basically for each js there is a "parent" canvas, aka canvas 1, 4, and 7. Confused if I need to include all canvases for it to display? even though it should only need the parent canvas to display. help-->
+     <div class="canvas-row">
+        <div class="canvas-container">
+            <div id="canvas1"></div>
+            <div id="canvas2"></div>
+            <div id="canvas3"></div>
+    </div>
+
+
+
+    <!-- Footer Section -->
+    <footer id="footer">
+        <div class="footer-container">
+            <p>© yuzu9x. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Script for my words. --> 
+    <script src="./5_parsons.js"></script>
+    
+
+</body>
+</html>
