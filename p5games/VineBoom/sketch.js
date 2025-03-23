@@ -8,12 +8,15 @@ handPose = ml5.handPose();
 soundEffect = loadSound('../p5games/VineBoom/vine-boom.mp3'); 
 
 
+function preload () {
+  loadSound('../p5games/VineBoom/vine-boom.mp3');
+}
+
 function setup() {
   createCanvas(640, 480).parent("game-container");
   video = createCapture(VIDEO);
   video.size(640, 480);
   video.hide();
-  
   handPose.detectStart(video, gotHands);
 }
 
