@@ -6,7 +6,9 @@ let soundEffect;
 // let handPose;
 
 
-
+function preload() {
+  handPose = ml5.handPose();
+}
 
 
 function setup() {
@@ -16,7 +18,7 @@ function setup() {
   video.size(640, 480);
   video.hide();
 
-  handPose = ml5.handPose();
+  // handPose = ml5.handPose();
   handPose.detectStart(video, gotHands);
 
   soundEffect = loadSound('../p5games/VineBoom/vine-boom.mp3'); 
