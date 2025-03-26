@@ -39,7 +39,7 @@ function draw() {
     grayImage.loadPixels();
     
     for (let x = 0; x < grayImage.width; x++) {
-      for (let y = 0; y < grayImage.height; y++) {
+      for (let y = 0; y < grayImage.height * 4; y++) {
         const index = (x + y * grayImage.width) * 4;
         
         const r = grayImage.pixels[index];
