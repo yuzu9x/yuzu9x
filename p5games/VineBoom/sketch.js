@@ -3,13 +3,11 @@ let video;
 let hands = [];
 let isBoiPoseDetected = false;
 let soundEffect;
-// let handPose;
-
+let grayImage;
 
 function preload() {
   handPose = ml5.handPose();
 }
-
 
 function setup() {
   createCanvas(640, 480).parent("game-container");
@@ -18,7 +16,11 @@ function setup() {
   video.size(640, 480);
   video.hide();
 
-  // handPose = ml5.handPose();
+  // Make cam black and white using creategraphics
+  grayImage = createGraphics(640, 480, {
+    willReadFrequently: true
+  });
+
   handPose.detectStart(video, gotHands);
 
   soundEffect = loadSound('../p5games/VineBoom/vine-boom.mp3'); 
@@ -28,9 +30,37 @@ function draw() {
   push();
 
   translate(width, 0);
-  //flip video footage
   scale(-1, 1);
-  image(video, 0, 0, width, height);
+  
+  if (isBoiPoseDetected) {
+    // Grayscale conversion
+    grayImage.clear(); 
+    grayImage.image(video, 0, 0, width, height);
+    grayImage.loadPixels();
+    
+    for (let x = 0; x < grayImage.width; x++) {
+      for (let y = 0; y < grayImage.height; y++) {
+        const index = (x + y * grayImage.width) * 4;
+        
+        const r = grayImage.pixels[index];
+        const g = grayImage.pixels[index + 1];
+        const b = grayImage.pixels[index + 2];
+        
+        const gray = 0.21 * r + 0.72 * g + 0.07 * b;
+        
+        grayImage.pixels[index] = gray;
+        grayImage.pixels[index + 1] = gray;
+        grayImage.pixels[index + 2] = gray;
+      }
+    }
+    grayImage.updatePixels();
+    
+    // Draw the grayscale image bruh why da hell is this not working the dimensions of the video is correct
+    image(grayImage, 0, 0, width, height);
+  } else {
+    // Draw normal video when not detecting pose
+    image(video, 0, 0, width, height);
+  }
   
   // Check for pose
   if (hands.length > 0) {
@@ -53,12 +83,9 @@ function draw() {
   }
   
   pop();
-  
-  
 }
 
 function gotHands(results) {
-  
   hands = results;
 }
 
@@ -73,7 +100,6 @@ function checkForBoiPose(hand) {
   const pinky = hand.keypoints[20]; // Pinky tip
   
   const wrist = hand.keypoints[0];  // Wrist
-  
 
   const fingersExtended = 
     index.y < wrist.y - 10 &&
@@ -99,15 +125,4 @@ function checkForBoiPose(hand) {
   } else if (!boiPoseDetected) {
     isBoiPoseDetected = false;
   }
-  
-  
-  // Commenting out cuz only necessary for when tampering with code
-  //if (boiPoseDetected) {
-    // Draw a line from wrist to thumb so I can see if it locks the thumb
-  //   stroke(255, 0, 0);
-  //   strokeWeight(3);
-  //   line(wrist.x, wrist.y, thumb.x, thumb.y);
-  //   strokeWeight(1);
-  //   noStroke();
-   }
-
+}
