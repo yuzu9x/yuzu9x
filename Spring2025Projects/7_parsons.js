@@ -48,17 +48,17 @@ const potatoTypes = [
     {
         name: "Kawaii Potato",
         description: "You're kawaii af and awesome and everyone loves you. You like to put -chan at the end of everyones names and you are borderline a weeaboo. ",
-        image: ""
+        image: "../images/week9_cover/Kawaii_potato.png"
     },
     {
         name: "Tater Tot",
         description: "You have a naturally golden personality that brightens any room. But sometimes you can become evil and really soggy. Don't be soggy.",
-        image: "https://via.placeholder.com/200"
+        image: "../images/potatos/Tatertot.jpg"
     },
     {
         name: "Standard French Fry",
         description: "You're normal and basic but well loved. Even better with truffle mayo.",
-        image: "https://via.placeholder.com/200"
+        image: "../images/potatos/Frenchfry.jpg"
     }
 ];
 
