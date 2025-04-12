@@ -116,7 +116,6 @@
             overflow: hidden; 
         }
 
-       
         #canvas3 {
             display: none; 
         }
@@ -131,6 +130,139 @@
                 width: 100%;
                 max-width: 500px;
             }
+        }
+
+        /* Potato Quiz Styles */
+        .quiz-container {
+            background-color: #fff;
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto 80px auto;
+        }
+        
+        .start-screen, .question-container, .result-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .potato-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .potato-box {
+            height: 150px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #cec3d2;
+        }
+        
+        .potato-box img {
+            max-width: 100%;
+            max-height: 120px;
+            object-fit: contain;
+        }
+        
+        .btn {
+            background-color: #d7cde4;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+        
+        .btn:hover {
+            background-color: #dfccf1;
+        }
+        
+        .question-container {
+            display: none;
+        }
+        
+        .question {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 10px;
+            width: 100%;
+        }
+        
+        .option {
+            background-color: #f0e3f9;
+            border: 2px solid #7e7292;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .option:hover {
+            background-color: #f5e5f6;
+            transform: translateY(-2px);
+        }
+        
+        .progress {
+            width: 100%;
+            height: 10px;
+            background-color: #c1bcd2;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: #d7c8e4;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        
+        .result-container {
+            display: none;
+            text-align: center;
+        }
+        
+        .result-image {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #d0cbd8;
+        }
+        
+        .result-image img {
+            max-width: 180px;
+            max-height: 180px;
+            object-fit: contain;
+        }
+        
+        .result-title {
+            font-size: 28px;
+            color: #604873;
+            margin-bottom: 15px;
+        }
+        
+        .result-description {
+            margin-bottom: 30px;
         }
     </style>
 </head>
@@ -147,16 +279,51 @@
             <li><a href="../contact.html">contact</a></li>
         </ul>
     </nav>
-
+    
     <div class="title-section">
         <h1>week 10: Potato Quiz</h1>
         <p>Prototype Only. for now...</p>
-        
+        <h3>What Potato are You</h3>
     </div>
 
-   
-
-
+    <!-- Potato Quiz Content -->
+    <div class="quiz-container">
+        <div class="start-screen">
+            <div class="potato-grid">
+                <div class="potato-box">
+                    <img src="https://via.placeholder.com/150" alt="Russet Potato">
+                </div>
+                <div class="potato-box">
+                    <img src="https://via.placeholder.com/150" alt="Sweet Potato">
+                </div>
+                <div class="potato-box">
+                    <img src="https://via.placeholder.com/150" alt="Yukon Gold">
+                </div>
+                <div class="potato-box">
+                    <img src="https://via.placeholder.com/150" alt="Purple Potato">
+                </div>
+            </div>
+            <p>WHAT POTATO ARE YOU</p>
+            <button class="btn" id="start-btn">Start Quiz</button>
+        </div>
+        
+        <div class="question-container">
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="question" id="question-text"></div>
+            <div class="options" id="options-container"></div>
+        </div>
+        
+        <div class="result-container">
+            <div class="result-image">
+                <img id="result-img" src="https://via.placeholder.com/200" alt="Your Potato Type">
+            </div>
+            <h2 class="result-title" id="result-title">Your Potato Type</h2>
+            <p class="result-description" id="result-description">Description about potato</p>
+            <button class="btn" id="restart-btn">Take Quiz Again</button>
+        </div>
+    </div>
 
     <!-- Footer Section -->
     <footer id="footer">
@@ -166,7 +333,5 @@
     </footer>
 
     <script src="./7_parsons.js"></script>
-    <button id="myButton">Click Me!</button>
-
 </body>
 </html>
