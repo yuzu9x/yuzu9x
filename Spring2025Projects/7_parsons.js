@@ -120,6 +120,126 @@ const questions = [
             "Mashed Potato :D", // Mashed Potato
         ]
     },
+    {
+        question: "What would your enemies say about you behind your back?",
+        options: [
+            "So boring I forgot they existed", // Baked Potato
+            "Literally just sits there doing nothing", // Raw Potato
+            "Acts like a child but thinks they're adorable", // Tater Tot
+            "Bland and forgettable, like unsalted fries", // Standard French Fry
+            "Has a superiority complex that makes me sick", // Hashbrown
+            "Tries WAY too hard to be impressive", // Million Layer Potato
+            "Attention-seeking drama queen", // Loaded Baked Potato
+            "Clings to people like mashed potato on a spoon", // Mashed Potato
+            "Thinks they're fancy but they're just a potato", // Potato au Gratin
+            "Too emotional and always playing the victim", // Potato Soup
+            "Disgusting mix of random traits with no identity", // Potato Salad
+            "Mindless trend-follower with zero originality", // Spiral Potato
+            "That anime obsession is seriously concerning", // Kawaii Potato
+            "All appearance, zero substance", // Wedge Potato Fries
+            "Gets crusty under pressure", // Oven-roasted Potatoes
+        ]
+    },
+    {
+        question: "How do you respond to criticism?",
+        options: [
+            "Just sit there and take it", // Baked Potato
+            "I'll deal with it later (never)", // Raw Potato
+            "Throw a tantrum like a literal child", // Tater Tot
+            "Accept it without question like the basic fucking idiot potato I am", // Standard French Fry
+            "What's criticism?", // Hashbrown
+            "Overcompensate with excessive effort that misses the point", // Million Layer Potato
+            "Add more toppings to distract from my flaws", // Loaded Baked Potato
+            "Disintegrate", // Mashed Potato
+            "Respond with snobbish disdain", // Potato au Gratin
+            "Simmer with resentment for days", // Potato Soup
+            "Unpredictably swing between rage and indifference", // Potato Salad
+            "Quickly change my entire personality to match what they want", // Spiral Potato
+            "Cry and run away again", // Kawaii Potato
+            "Promise to change but never actually do", // Wedge Potato Fries
+            "Get heated but ultimately become a better person", // Oven-roasted Potatoes
+        ]
+    },
+    {
+        question: "What's your toxic trait?",
+        options: [
+            "Being completely forgettable", // Baked Potato
+            "Unlimited potential but zero follow-through", // Raw Potato
+            "I'm basically a child in an adult's body", // Tater Tot
+            "I have the personality of cardboard", // Standard French Fry
+            "I'm insufferably smug about my accomplishments", // Hashbrown
+            "I waste people's time with unnecessary complexity", // Million Layer Potato
+            "I make everything about me and my problems", // Loaded Baked Potato
+            "I'm clingy and emotionally overwhelming", // Mashed Potato
+            "I'm a pretentious snob with expensive taste", // Potato au Gratin
+            "I guilt-trip people into taking care of me", // Potato Soup
+            "I'm completely unpredictable and inconsistent", // Potato Salad
+            "I have zero original thoughts or opinions", // Spiral Potato
+            "I use cuteness to manipulate people", // Kawaii Potato
+            "I consistently disappoint everyone", // Wedge Potato Fries
+            "I burn under pressure when people need me", // Oven-roasted Potatoes
+        ]
+    },
+    {
+        question: "What would cause your downfall?",
+        options: [
+            "Being boring", // Baked Potato
+            "Never actualizing my potential", // Raw Potato
+            "Being crushed by the reality of adulthood", // Tater Tot
+            "Realizing I'm just like everyone else", // Standard French Fry
+            "Saying a slur on tiktok live", // Hashbrown
+            "Collapsing under the weight of my own complexity", // Million Layer Potato
+            "When people get tired of my drama", // Loaded Baked Potato
+            "Taking shrooms and experiencing ego death", // Mashed Potato
+            "Discovering I'm just a potato with fancy cheese", // Potato au Gratin
+            "Getting too cold and overbearing", // Potato Soup
+            "My inconsistent work ethic", // Potato Salad
+            "The next trend making me completely irrelevant", // Spiral Potato
+            ":3 ermm...", // Kawaii Potato
+            "People finally giving up on me entirely", // Wedge Potato Fries
+            "Getting burnt to a crisp under pressure", // Oven-roasted Potatoes
+        ]
+    },
+    {
+        question: "What's your dating red flag?",
+        options: [
+            "I have the personality of an actual potato", // Baked Potato
+            "I'm completely undeveloped as a person", // Raw Potato
+            "I collect blindbox toys", // Tater Tot
+            "I'm exactly like every other person you've dated", // Standard French Fry
+            "I never shut up about how amazing I am", // Hashbrown
+            "I make everything needlessly complicated", // Million Layer Potato
+            "I need constant validation and attention", // Loaded Baked Potato
+            "I'll emotionally smother you", // Mashed Potato
+            "I'll judge your 'unsophistication", // Potato au Gratin
+            "I use my problems to manipulate you", // Potato Soup
+            "You'll never know which version of me you'll get", // Potato Salad
+            "I have no personality besides current trends", // Spiral Potato
+            "I am too cute and awesome and amazing", // Kawaii Potato
+            "I look better in pictures than in real life", // Wedge Potato Fries
+            "I fall apart when things get hot", // Oven-roasted Potatoes
+        ]
+    },
+    {
+        question: "What's your spirit animal?",
+        options: [
+            "A baked potato", // Baked Potato
+            "An unhatched egg", // Raw Potato
+            "A really awesome 10 year old", // Tater Tot
+            "A beige wall", // Standard French Fry
+            "A peacock", // Hashbrown
+            "An octopus", // Million Layer Potato
+            "A massive tiger, keyword massive", // Loaded Baked Potato
+            "A koala", // Mashed Potato
+            "A really slender black cat that is a little evil", // Potato au Gratin
+            "A sad turtle", // Potato Soup
+            "A pug", // Potato Salad
+            "A fat sheep", // Spiral Potato
+            "A kawaii potato", // Kawaii Potato
+            "A goldfish", // Wedge Potato Fries
+            "What", // Oven-roasted Potatoes
+        ]
+    }
 ];
 
 // All da potatotypes
