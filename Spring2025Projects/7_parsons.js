@@ -1,44 +1,128 @@
-// Just 4 questions
+// more quesiton options now
 const questions = [
     {   
         question: "How do you prefer to spend your free time?",
         options: [
-            "Relaxing at home with a good book or movie",
-            "Since when did potatoes have free time to spend?",
-            "Peeing and Pooping",
-            "Thinking about the sins I have committed "
+            "Relaxing at home with a good book or movie", // Baked Potato
+            "Since when did potatoes have free time to spend?", // Raw Potato
+            "Peeing and Pooping", // Potato Salad
+            "Thinking about the sins I have committed", // Potato Soup
+            "Being the center of attention at social gatherings", // Loaded Baked Potato
+            "Trying new and exotic experiences", // Spiral Potato
+            "Creating something beautiful or delicious", // Potato au Gratin
+            "Spending time with loved ones", // Mashed Potato
+            "Exercising and staying active", // Hashbrown
+            "Learning something new and challenging", // Million Layer Potato
+            "Helping others and volunteering", // Kawaii Potato
+            "Just going with the flow, whatever happens", // Standard French Fry
+            "Video games and tech gadgets", // Tater Tot
+            "Contemplating life while staring at walls", // Wedge Potato Fries
+            "Getting crispy under the sun", // Oven-roasted Potatoes
         ]
     },
     {
         question: "How would friends describe your personality?",
         options: [
-            "Reliable and dependable",
-            "Potato",
-            "Versatile and adaptable",
-            "Annoying and Insufferable"
+            "Reliable and dependable", // Baked Potato
+            "Potato", // Raw Potato
+            "Versatile and adaptable", // Mashed Potato
+            "Annoying and Insufferable", // Wedge Potato Fries
+            "Warm and comforting", // Potato Soup
+            "Complex and layered", // Million Layer Potato
+            "Fun and indulgent", // Loaded Baked Potato
+            "Sophisticated and refined", // Potato au Gratin
+            "Energetic and crispy", // Hashbrown
+            "Cute and lovable", // Kawaii Potato
+            "Straightforward and no-nonsense", // Standard French Fry
+            "Quirky and unconventional", // Spiral Potato
+            "Playful and fun-sized", // Tater Tot
+            "Hearty and traditional", // Potato Salad
+            "Golden and well-seasoned", // Oven-roasted Potatoes
         ]
     },
     {
         question: "What's your approach to life's challenges?",
         options: [
-            "Take them on with steady determination",
-            "Address them with care and compassion",
-            "Cry and run away",
-            "Adapt and find multiple solutions"
+            "Take them on with steady determination", // Baked Potato
+            "Address them with care and compassion", // Kawaii Potato
+            "Cry and run away", // Potato Salad
+            "Adapt and find multiple solutions", // Mashed Potato
+            "Add more cheese and bacon", // Loaded Baked Potato
+            "Layer different approaches until something works", // Million Layer Potato 
+            "Face them head-on with heat and pressure", // Hashbrown
+            "Blend in with others facing similar challenges", // Standard French Fry
+            "Approach them with sophistication and style", // Potato au Gratin
+            "Go in circles and make repeat mistakes", // Spiral Potato
+            "Wait until I'm ready to deal with them", // Raw Potato
+            "Simmer slowly until the solution becomes clear", // Potato Soup
+            "Jump right in with enthusiasm", // Tater Tot
+            "Try to work it out but ultimately disappoint", // Wedge Potato Fries
+            "Get roasted but come out stronger", // Oven-roasted Potatoes
         ]
     },
     {
         question: "Which would be your ideal vacation?",
         options: [
-            "Laying in soil for an extended period of time",
-            "A relaxing beach retreat or spa getaway",
-            "Getting sliced up and laid out on a pan, then seasoned with salt, pepper, and rosemary. And a drizzle of olive oil. Then cooked until crisp and buttery.",
-            "Playing video games all days and eating a bunch of snacks"
+            "Laying in soil for an extended period of time", // Raw Potato
+            "A relaxing beach retreat or spa getaway", // Baked Potato
+            "Getting sliced up and laid out on a pan, then seasoned with salt, pepper, and rosemary. And a drizzle of olive oil. Then cooked until crisp and buttery.", // Oven-roasted Potatoes
+            "Playing video games all days and eating a bunch of snacks", // Tater Tot
+            "A fancy culinary tour with gourmet experiences", // Potato au Gratin
+            "A cozy cabin with comfort food and warm drinks", // Potato Soup
+            "An adventure park with thrilling rides and attractions", // Spiral Potato
+            "An expensive dinner at an expensive restaurant", // Million Layer Potato
+            "A music festival or concert series", // Loaded Baked Potato
+            "Go to an anime convention", // Kawaii Potato
+            "Going wherever friends are going", // Standard French Fry
+            "A wellness retreat focused on health and fitness", // Hashbrown
+            "A family reunion with traditional activities", // Potato Salad
+            "Anywhere as long as it's cheap and easy", // Wedge Potato Fries
+            "A cozy gathering with closest friends", // Mashed Potato
         ]
-    }
+    },
+    {
+        question: "What's your biggest weakness?",
+        options: [
+            "Being too plain and predictable", // Baked Potato
+            "Potential but no direction", // Raw Potato
+            "Being too childish", // Tater Tot
+            "People find me bland without condiments", // Standard French Fry
+            "I'm perfect in every way", // Hashbrown
+            "Being better than everyone", // Million Layer Potato
+            "Needing too much validation", // Loaded Baked Potato
+            "Sometimes too overwhelming", // Mashed Potato
+            "Being intimidatingly sophisticated", // Potato au Gratin
+            "Getting cold too quickly", // Potato Soup
+            "Being evil and not a good person", // Potato Salad
+            "Following trends blindly", // Spiral Potato
+            "Being overly emotional and sensitive", // Kawaii Potato
+            "Disappointing peoples expectations'", // Wedge Potato Fries
+            "Getting too stressed when under pressure", // Oven-roasted Potatoes
+        ]
+    },
+    {
+        question: "What's your favorite type of potato?",
+        options: [
+            "Your mom", // Raw Potato
+            "YOUR MOM", // Baked Potato
+            "I really like oven-roasted potatoes!", // Oven-roasted Potatoes
+            "Tater tots", // Tater Tot
+            "Chicken Alfredo Pasta", // Potato au Gratin
+            "I like the color green", // Potato Soup
+            "The spiral potatoes you get on a stick at a festival or carnival", // Spiral Potato
+            "A potato completely covered in gold leaf and garnished with caviar", // Million Layer Potato
+            "Loaded Baked Potato", // Loaded Baked Potato
+            "Kawaii Potato :3", // Kawaii Potato
+            "French fries...?", // Standard French Fry
+            "Have you guys ever tried a hashbrown with creme fraiche and caviar on it? It's so fire. Like you gotta believe me", // Hashbrown
+            "Potato Salad", // Potato Salad
+            "Guys wedge fries are actually so good trust me I swear", // Wedge Potato Fries
+            "Mashed Potato :D", // Mashed Potato
+        ]
+    },
 ];
 
-// All potatotypes
+// All da potatotypes
 const potatoTypes = [
     {   // 1
         name: "Baked Potato",
@@ -48,7 +132,7 @@ const potatoTypes = [
     {   // 2
         name: "Kawaii Potato",
         description: "You're kawaii af and awesome and everyone loves you. You like to put -chan at the end of everyones names and you are borderline a weeaboo. ",
-        image: "../images/week9_cover/Kawaii_potato.png"
+        image: "../images/Kawaii_potato.png"
     },
     {   // 3
         name: "Tater Tot",
@@ -96,7 +180,7 @@ const potatoTypes = [
         image: "../images/potatos/Potatosoup.jpg"
     },
     {   // 12
-        name: "Wedge Potato Fries",
+        name: "Potato Wedges",
         description: "Terrible. You may look pleasing at first but the second someone starts talking to you they tap out of the conversation cause you're bland and lame.",
         image: "../images/potatos/Potatowedge.jpg"
     },
@@ -113,7 +197,7 @@ const potatoTypes = [
     {   // 15
         name: "Spiral Potato on a stick",
         description: "You are really keen on trends and are unable to form your own opinion. Good but you get boring fast.",
-        image: "../images/potatos/Spiralpotato.jpg"
+        image: "../images/potatos/Spiralpotato.png"
     },
 ];
 
@@ -131,7 +215,7 @@ const resultImg = document.getElementById('result-img');
 const restartBtn = document.getElementById('restart-btn');
 
 let currentQuestion = 0;
-let scores = [0, 0, 0, 0]; // Score for each potato type
+let scores = Array(15).fill(0); 
 
 // Start the quiz on click
 startBtn.addEventListener('click', startQuiz);
@@ -165,10 +249,10 @@ function showQuestion(questionIndex) {
 }
 
 function selectOption(optionIndex) {
-    // Record the answer (increase score for that potato type)
+    // Record the answer
     scores[optionIndex]++;
     
-    // Move to next question or show results
+    // Move to next question/show results
     currentQuestion++;
     
     if (currentQuestion < questions.length) {
@@ -180,13 +264,15 @@ function selectOption(optionIndex) {
 
 function showResult() {
     questionContainer.style.display = 'none';
-
     resultContainer.style.display = 'flex';
     
     const maxScore = Math.max(...scores);
-    const potatoIndex = scores.indexOf(maxScore);
+    const potatoIndices = scores.map((score, index) => score === maxScore ? index : -1).filter(index => index !== -1);
     
-    // Display result of score
+    // In case of a tie, choose randomly from the highest scoring potato types (lol)
+    const potatoIndex = potatoIndices[Math.floor(Math.random() * potatoIndices.length)];
+    
+    // Display result of da score
     const potatoResult = potatoTypes[potatoIndex];
     resultTitle.textContent = `You are a ${potatoResult.name}!`;
     resultDescription.textContent = potatoResult.description;
@@ -197,7 +283,7 @@ function showResult() {
 function restartQuiz() {
     // To restart the quiz duh
     currentQuestion = 0;
-    scores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    scores = Array(15).fill(0);
     
     // Show start screen again
     resultContainer.style.display = 'none';
