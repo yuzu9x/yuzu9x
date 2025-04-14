@@ -137,7 +137,7 @@ const potatoTypes = [
     {   // 3
         name: "Tater Tot",
         description: "You have a naturally golden personality that brightens any room. But sometimes you can become evil and really soggy. Don't be soggy.",
-        image: "../images/potatos/Tatertot.jpg"
+        image: "../images/potatos/TaterTot.jpg"
     },
     {   // 4
         name: "Standard French Fry",
