@@ -334,8 +334,39 @@ const resultDescription = document.getElementById('result-description');
 const resultImg = document.getElementById('result-img');
 const restartBtn = document.getElementById('restart-btn');
 
+
+
+// Create player history container
+const playerHistoryContainer = document.createElement('div');
+playerHistoryContainer.classList.add('player-history-container');
+playerHistoryContainer.innerHTML = `
+    <h3>Previous Potatoes</h3>
+    <div class="player-history-list"></div>
+`;
+startScreen.appendChild(playerHistoryContainer);
+
+// Create name input container
+const nameInputContainer = document.createElement('div');
+nameInputContainer.classList.add('name-input-container');
+nameInputContainer.innerHTML = `
+    <h3>Save your result!</h3>
+    <input type="text" id="player-name" placeholder="Enter your name">
+    <button id="save-result-btn">Save Result</button>
+`;
+resultContainer.appendChild(nameInputContainer);
+
 let currentQuestion = 0;
 let scores = Array(15).fill(0); 
+let currentPotatoResult = null;
+
+// Initialize event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Load player history when page loads
+    loadPlayerHistory();
+    
+    // Add event listener for save button (needs to be done after DOM is loaded)
+    document.getElementById('save-result-btn').addEventListener('click', saveResult);
+});
 
 // Start the quiz on click
 startBtn.addEventListener('click', startQuiz);
@@ -393,11 +424,68 @@ function showResult() {
     const potatoIndex = potatoIndices[Math.floor(Math.random() * potatoIndices.length)];
     
     // Display result of da score
-    const potatoResult = potatoTypes[potatoIndex];
-    resultTitle.textContent = `You are a ${potatoResult.name}!`;
-    resultDescription.textContent = potatoResult.description;
-    resultImg.src = potatoResult.image;
-    resultImg.alt = potatoResult.name;
+    currentPotatoResult = potatoTypes[potatoIndex];
+    resultTitle.textContent = `You are a ${currentPotatoResult.name}!`;
+    resultDescription.textContent = currentPotatoResult.description;
+    resultImg.src = currentPotatoResult.image;
+    resultImg.alt = currentPotatoResult.name;
+    
+    // Show the name input
+    nameInputContainer.style.display = 'flex';
+}
+
+function saveResult() {
+    const playerName = document.getElementById('player-name').value.trim();
+    
+    if (playerName === '') {
+        alert('Please enter your name! :D');
+        return;
+    }
+    
+    // Get existing players or create empty array
+    const players = JSON.parse(localStorage.getItem('potatoQuizPlayers') || '[]');
+    
+    // Add new player
+    players.push({
+        name: playerName,
+        potatoType: currentPotatoResult.name,
+        date: new Date().toISOString()
+    });
+    
+    // Save to localStorage
+    localStorage.setItem('potatoQuizPlayers', JSON.stringify(players));
+    
+    // Reset name input
+    document.getElementById('player-name').value = '';
+    
+    // Show confirmation
+    alert('Your result has been saved :3');
+    
+    // Update player history display
+    loadPlayerHistory();
+}
+
+function loadPlayerHistory() {
+    const playerHistoryList = document.querySelector('.player-history-list');
+    if (!playerHistoryList) return;
+    
+    playerHistoryList.innerHTML = '';
+    
+    // Get players from localStorage
+    const players = JSON.parse(localStorage.getItem('potatoQuizPlayers') || '[]');
+    
+    if (players.length === 0) {
+        playerHistoryList.innerHTML = '<p>No players yet...</p>';
+        return;
+    }
+    
+    // Display each player that played
+    players.forEach(player => {
+        const playerElement = document.createElement('div');
+        playerElement.classList.add('player-item');
+        playerElement.textContent = `I'm ${player.name} and I'm a ${player.potatoType}`;
+        playerHistoryList.appendChild(playerElement);
+    });
 }
 
 function restartQuiz() {
@@ -408,4 +496,7 @@ function restartQuiz() {
     // Show start screen again
     resultContainer.style.display = 'none';
     startScreen.style.display = 'flex';
+    
+    // Make sure the player history is up to date
+    loadPlayerHistory();
 }
