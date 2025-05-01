@@ -292,7 +292,7 @@ const potatoTypes = [
     {   // 10
         name: "Potato Salad",
         description: "You are either liked by little kids our really old people. No in between. Often unpredictable, you can be a hit or miss.",
-        image: "../images/potatos/Potatosalad.jpg"
+        image: "../images/potatos/Potatosalad.webp"
     },
     {   // 11
         name: "Potato Soup",
