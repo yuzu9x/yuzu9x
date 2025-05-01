@@ -1,4 +1,7 @@
 let gameState = 'title';
+
+let customCursor;
+
 let teapot, teabag, teacup;
 let teapotPos, teabagPos, teacupPos;
 
@@ -57,6 +60,8 @@ async function fetchQuote() {
 
 function preload() {
     almendraFont = loadFont('../fonts/AlmendraDisplay-Regular.ttf');
+
+    customCursor = loadImage('../images/teaReading/silverspoon.png'); //I want to make my cursor a spoon but its not WORKING
   }
 
 
