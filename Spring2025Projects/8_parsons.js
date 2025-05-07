@@ -335,7 +335,7 @@ function drawReadingScreen() {
     textFont('Almendra Display');
     fill('#4d4c91');
     textSize(60);
-    text('Your Tea Leaf Reading', width/2, 80);
+    text('Your Tea Leaf Reading', width/2, 100);
     
     // Draw teacup
     push();
@@ -363,17 +363,17 @@ function drawReadingScreen() {
         fill('#3a2c1f');
         textSize(20);
 
-        let quoteBoxX = width / 2 - 200;
-        let quoteBoxY = height - 130;
-        let quoteBoxW = 400;
+        let quoteBoxX = width / 2;
+        let quoteBoxY = height / 2 - 130;
+        let quoteBoxW = 800;
 
         textAlign(CENTER, CENTER);
-        text(quote, width / 2, quoteBoxY, quoteBoxW);
+        text(quote, width / 2 , quoteBoxY, quoteBoxW);
     } else {
         textFont('Almendra Display');
-        textSize(24);
+        textSize(14);
         fill('#3a2c1f');
-        text("Reading the leaves...", width / 2, height / 2 - 150);
+        text("Reading the leaves...", width / 2 , height / 2 - 150);
     }
 }
 
@@ -563,7 +563,7 @@ class Particle { //Particle effect for the tea leaves
         pop();
     }
 
-    swirlToMouse() {
+    swirlToMouse() { // So tea will follow mouse
         let mouse = createVector(mouseX, mouseY);
         let dir = p5.Vector.sub(this.pos, mouse);
         let d = dir.mag();
