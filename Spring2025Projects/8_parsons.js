@@ -16,11 +16,32 @@ let hoverDuration = 0;
 let requiredHoverTime = 5;
 
 let quote = "";
-let quotePoints = [];
 let particleSystem = [];
 let almendraCss = false;
 // API I using
 const api_url ="https://api.api-ninjas.com/v1/quotes";
+
+// Pattern types for tea leaves clumps
+const PATTERNS = {
+    CIRCLE: 'circle',
+    SPIRAL: 'spiral',
+    LINES: 'lines',
+    CLUMPS: 'clumps',
+    HEART: 'heart'
+};
+
+// Pattern interpretations
+const INTERPRETATIONS = {
+    [PATTERNS.CIRCLE]: "Circle: A circle in your cup suggests completion and harmony. A goal will soon be achieved.",
+    [PATTERNS.SPIRAL]: "Spiral: A spiral suggests a journey of personal growth and transformation ahead.",
+    [PATTERNS.LINES]: "Lines: Lines represent pathways and journeys. New opportunities are on the horizon.",
+    [PATTERNS.CLUMPS]: "Clusters: Grouped leaves indicate gathering of friends or resources. Connection is coming your way.",
+    [PATTERNS.HEART]: "Heart: A heart shape suggests love and emotional fulfillment will arise soon..."
+};
+
+// Selected pattern and interpretation
+let selectedPattern;
+let patternInterpretation = "";
 
 async function getapi(url)
 {
@@ -48,28 +69,19 @@ async function fetchQuote() {
         quote = "The future remains veiled...";
     }
 
-    // Generate text points after quote is fetched
-    quotePoints = almendraFont.textToPoints(quote, 100, height - 120, 44, {
-        sampleFactor: 0.15,
-        simplifyThreshold: 0
-    });
-
-    particleSystem = quotePoints.map(pt => new Particle(pt.x, pt.y, pt.x, pt.y));
+    // Create tea leaves in a random pattern
+    createRandomPattern();
 }
-
 
 function preload() {
     almendraFont = loadFont('../fonts/AlmendraDisplay-Regular.ttf');
 
     customCursor = loadImage('../images/teaReading/silverspoon.png'); //I want to make my cursor a spoon but its not WORKING
-  }
-
+}
 
 function setup() {
     let canvas = createCanvas(800, 600);
    
-    
-
     let container = document.getElementById('game-container');
     if (container) {
         canvas.parent('game-container');
@@ -94,11 +106,13 @@ function setup() {
         document.head.appendChild(link);
         almendraCss = true;
     }
+    
+    // Custom cursor setup
+    noCursor();
 }
 
 function draw() {
     background('#e5f0e1');
-    
     
     if (gameState === 'title') {
         drawTitleScreen();
@@ -108,6 +122,14 @@ function draw() {
         drawSteepingScreen();
     } else if (gameState === 'reading') {
         drawReadingScreen();
+    }
+    
+    // Draw custom cursor
+    if (customCursor) {
+        push();
+        imageMode(CENTER);
+        image(customCursor, mouseX, mouseY, 40, 40);
+        pop();
     }
 }
 
@@ -133,6 +155,10 @@ function mousePressed() {
         if (dist(mouseX, mouseY, teabagPos.x, teabagPos.y) < 40) {
             isDraggingTeabag = true;
         }
+    } else if (gameState === 'reading') {
+        // Click anywhere to restart
+        gameState = 'title';
+        resetGame();
     }
 }
 
@@ -163,7 +189,7 @@ function mouseReleased() {
 
 function mouseMoved() {
     if (gameState === 'steeping') {
-        // Reset hover timer if mouse is not over teacup lol
+        // Reset hover timer if mouse is not over teacup
         if (dist(mouseX, mouseY, teacupPos.x, teacupPos.y) > 70) {
             hoverStartTime = millis() / 1000;
             hoverDuration = 0;
@@ -197,19 +223,20 @@ function mouseDragged() {
 function drawTitleScreen() {
     fill('#4d4c91');
     textSize(80);
-    textFont('Almendra Display');
+    textFont(almendraFont);
+
     text('Read Your Tea...', width/2, height/2 - 170);
     
-  
-    textFont('Almendra Display');
+    textFont(almendraFont);
+
     textSize(20);
     text('A Game on Tasseography', width/2, height/2 - 120);
     
-    textFont('Almendra Display');
+    textFont(almendraFont);
+
     textSize(15);
     text('By Melisa Li', width/2, height/2 - 100);
     
-   
     let buttonX = width/2;
     let buttonY = height/2 + 230;
     let buttonWidth = 80; 
@@ -224,7 +251,8 @@ function drawTitleScreen() {
     rect(buttonX, buttonY, buttonWidth-20, buttonHeight-20, 35);
     
     // Button text 
-    textFont('Almendra Display');
+    textFont(almendraFont);
+
     fill(255);
     textSize(24);
     text('Begin', buttonX, buttonY);
@@ -239,12 +267,14 @@ function drawTitleScreen() {
 }
 
 function drawPreparationScreen() {
-    textFont('Almendra Display');
+    textFont(almendraFont);
+
     fill('#4d4c91');
     textSize(30);
     text('Prepare Your Tea', width/2, 80);
     
-    textFont('Almendra Display');
+    textFont(almendraFont);
+
     textSize(18);
     text('Drag the teapot and teabag to the cup', width/2, 120);
     
@@ -268,13 +298,15 @@ function drawPreparationScreen() {
 }
 
 function drawSteepingScreen() {
-    textFont('Almendra Display');
+    textFont(almendraFont);
+
     fill('#4d4c91');
     textSize(30);
     text('Steep Your Tea', width/2, 80);
     
     // Instructions 
-    textFont('Almendra Display');
+    textFont(almendraFont);
+
     textSize(18);
     text('Move your cursor over the teacup to stir. (' + Math.floor(hoverDuration) + '/' + requiredHoverTime + ' seconds)', width/2, 120);
     
@@ -296,7 +328,6 @@ function drawSteepingScreen() {
     push();
     translate(teacupPos.x, teacupPos.y);
 
-   
     noStroke();
     fill(255);
     ellipse(0, 0, 280, 280); 
@@ -311,7 +342,7 @@ function drawSteepingScreen() {
     ellipse(0, 0, 220, 220); 
     pop();
 
-    // Try to format the quote
+    // Initialize particles for tea leaves
     if (particleSystem.length === 0) {
         for (let i = 0; i < 100; i++) {
             particleSystem.push(new Particle(
@@ -332,7 +363,8 @@ function drawSteepingScreen() {
 
 function drawReadingScreen() {
     // Title
-    textFont('Almendra Display');
+    textFont(almendraFont);
+
     fill('#4d4c91');
     textSize(60);
     text('Your Tea Leaf Reading', width/2, 100);
@@ -351,39 +383,52 @@ function drawReadingScreen() {
     ellipse(0, 0, 220, 220); 
     pop();
 
-    
+    // Display tea leaves in their pattern
     for (let p of particleSystem) {
         p.display();
         p.update();
     }
 
-    // Put quote inside canvas . it is not working
-    if (quote && particleSystem.length > 0 && particleSystem[0].arrived) {
-        textFont('Almendra Display');
-        fill('#3a2c1f');
-        textSize(20);
+    // Display the fortune and pattern interpretashun
+    if (quote) {
+        push();
+        textFont(almendraFont);
 
-        let quoteBoxX = width / 2;
-        let quoteBoxY = height / 2 - 130;
-        let quoteBoxW = 800;
+        fill('#3a2c1f');
+        textSize(17);
+        textWrap(WORD);
+
+        let quoteBoxY = height - 100;
+        let quoteBoxW = 600;
 
         textAlign(CENTER, CENTER);
-        text(quote, width / 2 , quoteBoxY, quoteBoxW);
+        text(quote, width / 2, quoteBoxY, quoteBoxW);
+        
+        // Display pattern interpretation
+        if (patternInterpretation) {
+            fill('#4d4c91');
+            textSize(20);
+            text(patternInterpretation, width / 2, 170, 600);
+        }
+        pop();
     } else {
-        textFont('Almendra Display');
+        push();
+        textFont(almendraFont);
+
         textSize(14);
         fill('#3a2c1f');
-        text("Reading the leaves...", width / 2 , height / 2 - 150);
+        text("Reading the leaves...", width / 2, height / 2 - 150);
+        pop();
     }
-}
-
-
-// function fetchQuote() {
-  
-
-//     console.log(JSON[0]);
     
-
+    // Instructions to replay
+    push();
+    textFont(almendraFont);
+    fill('#4d4c91');
+    textSize(16);
+    text("Click anywhere to replay!", width / 2, height - 30);
+    pop();
+}
 
 // FUNCTIONS FOR ALL THE GRAPHICS
 function createTeacupImage() { //Teacup during the mixing stage
@@ -436,9 +481,6 @@ function createTeapotImage() {
 
     img.ellipse(50, 60, 65, 60); 
     
-    
-    
-    
     // Draw handle
     img.noFill();
     img.stroke(255);
@@ -482,8 +524,6 @@ function createTeabagImage() {
     
     return img;
 }
-
-
 
 // MAIN TITLE PAGE TEACUP
 function drawTeacup(cupColor, bgColor) {
@@ -574,4 +614,185 @@ class Particle { //Particle effect for the tea leaves
             this.vel.add(dir);
         }
     }
+}
+
+// functions for the patterns in tea leaves
+function createRandomPattern() {
+    // Select a random pattern
+    const patternKeys = Object.keys(PATTERNS);
+    selectedPattern = PATTERNS[patternKeys[Math.floor(Math.random() * patternKeys.length)]];
+    
+    // Get the interpretation
+    patternInterpretation = INTERPRETATIONS[selectedPattern];
+    particleSystem = [];
+    switch(selectedPattern) {
+        case PATTERNS.CIRCLE:
+            createCirclePattern();
+            break;
+        case PATTERNS.SPIRAL:
+            createSpiralPattern();
+            break;
+        case PATTERNS.LINES:
+            createLinesPattern();
+            break;
+        case PATTERNS.CLUMPS:
+            createClumpsPattern();
+            break;
+        case PATTERNS.HEART:
+            createHeartPattern();
+            break;
+        default:
+            createRandomTeaLeaves();
+    }
+}
+
+function createCirclePattern() {
+    const radius = 80;
+    const centerX = teacupPos.x;
+    const centerY = teacupPos.y;
+    
+    for (let i = 0; i < 100; i++) {
+        const angle = random(0, TWO_PI);
+        const r = random(radius - 20, radius);
+        const x = centerX + r * cos(angle);
+        const y = centerY + r * sin(angle);
+        
+        particleSystem.push(new Particle(
+            centerX + random(-50, 50),
+            centerY + random(-50, 50),
+            x, y
+        ));
+    }
+}
+
+function createSpiralPattern() {
+    const centerX = teacupPos.x;
+    const centerY = teacupPos.y;
+    
+    for (let i = 0; i < 100; i++) {
+        const angle = i * 0.2;
+        const radius = map(i, 0, 100, 10, 80);
+        const x = centerX + radius * cos(angle);
+        const y = centerY + radius * sin(angle);
+        
+        particleSystem.push(new Particle(
+            centerX + random(-50, 50),
+            centerY + random(-50, 50),
+            x, y
+        ));
+    }
+}
+
+function createLinesPattern() {
+    const centerX = teacupPos.x;
+    const centerY = teacupPos.y;
+    
+    for (let i = 0; i < 100; i++) {
+        let x, y;
+        
+        if (i < 33) {
+            // Horizontal line
+            x = centerX + map(i, 0, 33, -80, 80);
+            y = centerY - 20;
+        } else if (i < 66) {
+            // Vertical line
+            x = centerX;
+            y = centerY + map(i - 33, 0, 33, -80, 80);
+        } else {
+            // Diagonal line
+            const pos = map(i - 66, 0, 34, -60, 60);
+            x = centerX + pos;
+            y = centerY + pos;
+        }
+        
+        x += random(-5, 5);
+        y += random(-5, 5);
+        
+        particleSystem.push(new Particle(
+            centerX + random(-50, 50),
+            centerY + random(-50, 50),
+            x, y
+        ));
+    }
+}
+
+function createClumpsPattern() {
+    const centerX = teacupPos.x;
+    const centerY = teacupPos.y;
+    
+    // Create sum random clumps
+    const numClumps = floor(random(3, 5));
+    const clumpPositions = [];
+    
+    for (let i = 0; i < numClumps; i++) {
+        const angle = i * (TWO_PI / numClumps);
+        const radius = 50;
+        clumpPositions.push({
+            x: centerX + radius * cos(angle),
+            y: centerY + radius * sin(angle)
+        });
+    }
+    
+    for (let i = 0; i < 100; i++) {
+        const clump = clumpPositions[floor(random(0, numClumps))];
+        const x = clump.x + random(-20, 20);
+        const y = clump.y + random(-20, 20);
+        
+        particleSystem.push(new Particle(
+            centerX + random(-50, 50),
+            centerY + random(-50, 50),
+            x, y
+        ));
+    }
+}
+
+function createHeartPattern() {
+    const centerX = teacupPos.x;
+    const centerY = teacupPos.y;
+    
+    for (let i = 0; i < 100; i++) {
+        let t = map(i, 0, 100, 0, TWO_PI);
+        
+        // Heart curve parametric equation
+        let x = centerX + 60 * pow(sin(t), 3);
+        let y = centerY - 45 * cos(t) + 15 * cos(2*t) + 10 * cos(3*t) + 5 * cos(4*t);
+        
+        x += random(-5, 5);
+        y += random(-5, 5);
+        
+        particleSystem.push(new Particle(
+            centerX + random(-50, 50),
+            centerY + random(-50, 50),
+            x, y
+        ));
+    }
+}
+
+function createRandomTeaLeaves() {
+    for (let i = 0; i < 100; i++) {
+        particleSystem.push(new Particle(
+            teacupPos.x + random(-80, 80),
+            teacupPos.y + random(-80, 80),
+            teacupPos.x + random(-80, 80),
+            teacupPos.y + random(-80, 80)
+        ));
+    }
+}
+
+function resetGame() {
+    teapotInCup = false;
+    teabagInCup = false;
+    isDraggingTeapot = false;
+    isDraggingTeabag = false;
+    
+    teacupPos = { x: width/2, y: height/2 + 50 };
+    teapotPos = { x: width/2 - 200, y: height/2 + 50 }; 
+    teabagPos = { x: width/2 + 150, y: height/2 + 50 };
+    
+    hoverStartTime = 0;
+    hoverDuration = 0;
+    
+    quote = "";
+    patternInterpretation = "";
+    particleSystem = [];
 }
