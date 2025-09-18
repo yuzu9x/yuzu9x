@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
+
+  <title>yuzu9x - Parsons</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Apple Chancery', sans-serif;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      color: #1A1A1A;
+      line-height: 1.6;
+      min-height: 100vh; 
+      /* Look im using CSS Grid here even though its just one canvas */
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      align-items: center;
+      padding: 1rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      background-color: rgba(255, 182, 193, 0.2);
+      border: 2px solid #FFB6C1;
+      border-radius: 8px;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      color: #1A1A1A;
+      font-weight: 300;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .back-button:hover {
+      background-color: rgba(255, 182, 193, 0.4);
+      transform: translateX(-3px);
+      box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3);
+    }
+
+    .back-button::before {
+      content: '←';
+      font-size: 1.2rem;
+      color: #FFB6C1;
+    }
+
+    .title-section {
+      text-align: center;
+      margin: 4rem 0 3rem 0;
+      padding: 0 1rem;
+    }
+
+    .title-section h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #1A1A1A;
+      font-weight: 300;
+      letter-spacing: 4px;
+    }
+
+    /* Single canvas grid */
+    .canvas-grid {
+      display: grid;
+      place-items: center;
+      margin: 2rem auto;
+      width: 100%;
+    }
+
+    .canvas-box {
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.8);
+      overflow: hidden;
+      padding: 1rem;
+    }
+
+    .canvas-box canvas {
+      display: block;
+      border-radius: 6px;
+    }
+
+    footer {
+      background-color: #FEF6F6;
+      color: #000000;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <!-- back Button -->
+  <a href="../parsons.html" class="back-button">Back to Parsons</a>
+
+  <div class="title-section">
+    <h1>My Shoe Wardrobe</h1>
+    <h3>An Interactive Minigame</h3>
+  </div>
+
+  <!-- Single centered canvas -->
+  <div class="canvas-grid">
+    <div class="canvas-box" id="canvas1"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-container">
+      <p>© yuzu9x. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  
+  <script src="./1_parsons.js"></script>
+  <script>
+    new p5(sketch, "canvas1");
+  </script>
+</body>
+</html>
