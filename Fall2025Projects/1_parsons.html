@@ -16,48 +16,72 @@
     }
 
     body {
-      background-color: #FFFFFF;
-      color: #1A1A1A;
       line-height: 1.6;
       min-height: 100vh; 
-      /* Look im using CSS Grid here even though its just one canvas */
       display: grid;
       grid-template-rows: auto 1fr auto;
       align-items: center;
       padding: 1rem;
       position: relative;
       overflow-x: hidden;
+      cursor: none;
     }
 
     .back-button {
       position: absolute;
       top: 2rem;
       left: 2rem;
-      background-color: rgba(255, 182, 193, 0.2);
-      border: 2px solid #FFB6C1;
-      border-radius: 8px;
-      padding: 0.75rem 1.5rem;
+      z-index: 10;
+    }
+
+    .back-button img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .back-button img:hover {
+      transform: scale(1.1);
+    }
+
+    .wardrobe-button {
+      position: absolute;
+      top: 80%;
+      left: 80%;
+      z-index: 10;
+    }
+
+    .wardrobe-button img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .wardrobe-button img:hover {
+      transform: scale(1.1);
+    }
+
+    .walk-button {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      background: limegreen;
+      color: black;
+      font-weight: bold;
+      padding: 0.8rem 1.2rem;
+     
       text-decoration: none;
-      color: #1A1A1A;
-      font-weight: 300;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      box-shadow: 0 0 10px #36ff5b, 0 0 20px #5dff7d;
+      transition: transform 0.2s ease, background 0.2s ease;
+      z-index: 1000;
     }
 
-    .back-button:hover {
-      background-color: rgba(255, 182, 193, 0.4);
-      transform: translateX(-3px);
-      box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3);
-    }
-
-    .back-button::before {
-      content: '←';
-      font-size: 1.2rem;
-      color: #FFB6C1;
+    .walk-button:hover {
+      background: #00ff66;
+      transform: scale(1.05);
     }
 
     .title-section {
@@ -66,81 +90,259 @@
       padding: 0 1rem;
     }
 
-    .title-section h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      color: #1A1A1A;
-      font-weight: 300;
-      letter-spacing: 4px;
-    }
-
-    /* Single canvas grid */
     .canvas-grid {
       display: grid;
-      place-items: center;
-      margin: 2rem auto;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
       width: 100%;
+      height: 100%;
+      place-items: center;
     }
 
     .canvas-box {
-      border-radius: 8px;
-      background-color: rgba(255, 255, 255, 0.8);
-      overflow: hidden;
-      padding: 1rem;
-    }
-
-    .canvas-box canvas {
-      display: block;
-      border-radius: 6px;
-    }
-
-    footer {
-      background-color: #FEF6F6;
-      color: #000000;
-      text-align: center;
-      padding: 1rem;
-      position: fixed;
-      bottom: 0;
-      left: 0;
       width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
     }
 
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
+    /* Glitter particles */
+    .glitter-particle, .glitter-star { z-index: 9999; pointer-events: none; }
+    .glitter-particle {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle, #7efbff, #e9a0ff, #e8e8e8);
+      border-radius: 50%;
+      box-shadow: 0 0 6px #ffffff, 0 0 12px #f0f0f0, 0 0 18px #e0e0e0;
+      animation: glitter-fade 1.5s ease-out forwards;
     }
 
-    footer p {
-      font-size: 0.9rem;
-      font-weight: 300;
-      letter-spacing: 1px;
+    .glitter-star {
+      position: fixed;
+      color: #56ebff;
+      font-size: 12px;
+      text-shadow: 0 0 6px #ffffff, 0 0 12px #f0f0f0;
+      animation: star-twinkle 1.2s ease-out forwards;
+    }
+
+    @keyframes glitter-fade {
+      0% { opacity: 1; transform: scale(1) rotate(0deg); }
+      100% { opacity: 0; transform: scale(0.3) rotate(180deg); }
+    }
+
+    @keyframes star-twinkle {
+      0% { opacity: 1; transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.2) rotate(90deg); }
+      100% { opacity: 0; transform: scale(0.5) rotate(180deg); }
+    }
+
+    /* Custom cursor */
+    .custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #36ff5b, #5dff7d);
+      pointer-events: none;
+      z-index: 9998;
+      box-shadow: 0 0 10px #befffe, 0 0 20px #b0eeff, 0 0 30px #bcffaa;
+      transition: transform 0.1s ease;
+    }
+
+    @media (max-width: 768px) {
+      .back-button img { width: 100px; height: 100px; }
+      .wardrobe-button img { width: 120px; height: 120px; }
+      .wardrobe-button { top: 75%; left: 70%; }
     }
   </style>
 </head>
 <body>
-  <!-- back Button -->
-  <a href="../parsons.html" class="back-button">Back to Parsons</a>
 
-  <div class="title-section">
-    <h1>My Shoe Wardrobe</h1>
-    <h3>An Interactive Minigame</h3>
-  </div>
+  <div class="custom-cursor" id="customCursor"></div>
 
-  <!-- Single centered canvas -->
+  <a href="../parsons.html" class="back-button">
+    <img src="../Fall2025Projects/Fall2025Images/7NY65YOUI2DTYJF6NNY22EWAGN6NAEAP.gif" alt="Back">
+  </a>
+
+  <a href="closet.html" class="wardrobe-button">
+    <img src="../Fall2025Projects/Fall2025Images/Proceed.gif" alt="Proceed">
+  </a>
+
+  <!-- Walk button -->
+  <a href="walking.html" class="walk-button">let’s go on a walk RIGHT NOW</a>
+
   <div class="canvas-grid">
     <div class="canvas-box" id="canvas1"></div>
   </div>
 
-  <!-- Footer -->
-  <footer id="footer">
-    <div class="footer-container">
-      <p>© yuzu9x. All Rights Reserved.</p>
-    </div>
-  </footer>
-
-  
-  <script src="./1_parsons.js"></script>
   <script>
-    new p5(sketch, "canvas1");
+    // Custom cursor with glitter
+    const customCursor = document.getElementById('customCursor');
+    document.addEventListener('mousemove', (e) => {
+      customCursor.style.left = (e.clientX - 10) + 'px';
+      customCursor.style.top = (e.clientY - 10) + 'px';
+      if (Math.random() < 0.3) createGlitterParticle(e.clientX, e.clientY);
+    });
+    document.addEventListener('mouseleave', () => customCursor.style.opacity = '0');
+    document.addEventListener('mouseenter', () => customCursor.style.opacity = '1');
+
+    function createGlitterParticle(x, y) {
+      const isStar = Math.random() < 0.4;
+      if (isStar) createStarParticle(x, y);
+      else createCircleParticle(x, y);
+    }
+
+    function createCircleParticle(x, y) {
+      const particle = document.createElement('div');
+      particle.className = 'glitter-particle';
+      const offsetX = (Math.random() - 0.5) * 40;
+      const offsetY = (Math.random() - 0.5) * 40;
+      particle.style.left = (x + offsetX) + 'px';
+      particle.style.top = (y + offsetY) + 'px';
+      const size = 4 + Math.random() * 8;
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 1500);
+    }
+
+    function createStarParticle(x, y) {
+      const particle = document.createElement('div');
+      particle.className = 'glitter-star';
+      particle.innerHTML = '✦';
+      const offsetX = (Math.random() - 0.5) * 50;
+      const offsetY = (Math.random() - 0.5) * 50;
+      particle.style.left = (x + offsetX) + 'px';
+      particle.style.top = (y + offsetY) + 'px';
+      const fontSize = 8 + Math.random() * 8;
+      particle.style.fontSize = fontSize + 'px';
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 1200);
+    }
+
+    
+    let squares = [];
+    let time = 0;
+    let images = [];
+    let lineOffset = 0;
+
+    const imagePaths = [
+      '../Fall2025Projects/Fall2025Images/walking.gif',
+      '../Fall2025Projects/Fall2025Images/23a02330abd7142edbb6559b22742c79.jpg',
+      '../Fall2025Projects/Fall2025Images/358b16998532edaf7bbaf49d088bcef7.jpg',
+      '../Fall2025Projects/Fall2025Images/648c19857f98a540bf5bc70a520f0478.jpg',
+      '../Fall2025Projects/Fall2025Images/960221031d0d5d92435d11e9a1e246f2.gif',
+      '../Fall2025Projects/Fall2025Images/ab3047c29f8c5428643ba0b1bc2a85cf.jpg',
+      '../Fall2025Projects/Fall2025Images/ee2851fb4372321b894e9617896583b7.gif',
+      '../Fall2025Projects/Fall2025Images/walking.jpg',
+      "../Fall2025Projects/Fall2025Images/joewalk-joe.gif",
+      "../Fall2025Projects/Fall2025Images/kek-walk.gif",
+      "../Fall2025Projects/Fall2025Images/bubu-walk.gif",
+    ];
+
+    // My mileage with dates
+    const phrases = [
+      "09.21.2025 0.8 miles",
+      "09.20.2025 0.18 miles",
+      "09.19.2025 0.95 miles",
+      "09.18.2025 3.0 miles",
+      "09.17.2025 3.9 miles",
+      "09.16.2025 1.6 miles",
+      "09.15.2025 3.9 miles",
+      "09.14.2025 3.9 miles",
+      "09.13.2025 4.0 miles",
+      "09.12.2025 2.6 miles",
+      "09.11.2025 3.9 miles",
+      "09.10.2025 4.0 miles",
+      "09.09.2025 2.0 miles",
+      "09.08.2025 3.1 miles",
+      "09.07.2025 1.3 miles"
+    ];
+
+    function preload() {
+      // Load all images into array
+      for (let path of imagePaths) {
+        images.push(loadImage(path));
+      }
+    }
+
+    function setup() {
+      let canvas = createCanvas(windowWidth, windowHeight - 200);
+      canvas.parent('canvas1');
+
+      for (let i = 0; i < images.length; i++) {
+        squares.push({
+          x: -100 - (i * 150),
+          baseY: height / 2,
+          size: 120,
+          speed: 0.8,
+          waveOffset: i * 0.5,
+          img: images[i] 
+        });
+      }
+    }
+
+    function draw() {
+      background(255); 
+      time += 0.02;
+      lineOffset += 1; // Moves the line horizontally
+
+      // Draw animated squares for the images first
+      for (let square of squares) {
+        square.x += square.speed;
+        let waveY = sin(time + square.waveOffset + square.x * 0.01) * 80;
+        let y = square.baseY + waveY;
+
+        push();
+        translate(square.x + square.size / 2, y + square.size / 2);
+        rotate(sin(time + square.waveOffset) * 0.1);
+        imageMode(CENTER);
+        image(square.img, 0, 0, square.size, square.size);
+        pop();
+
+        if (square.x > width + 100) {
+          square.x = -100 - random(50, 200);
+        }
+      }
+
+      // Draw flowing lime green line with text 
+      drawFlowingLine();
+    }
+
+    function drawFlowingLine() {
+      // Draw lime green line
+      stroke(50, 255, 50); // Lime green color
+      strokeWeight(3);
+      noFill();
+
+      //Using sin to create the wavy wobbly line
+      beginShape();
+      for (let x = -50; x <= width + 50; x += 5) {
+        let waveY = sin((x + lineOffset) * 0.015 + time) * 60;
+        let y = height / 2.2 + waveY; // Position line lower, closer to images
+        vertex(x, y);
+      }
+      endShape();
+
+      // text phrases on the wobbly line
+      textAlign(CENTER, CENTER);
+      textSize(14);
+      fill(50, 200, 50); 
+      noStroke();
+
+      for (let x = 100; x < width; x += 100) { // Changed to every 100px
+        let waveY = sin((x + lineOffset) * 0.015 + time) * 60;
+        let y = height / 2.2 + waveY - 20; // Position text slightly above the line
+        
+        let phraseIndex = floor((x + lineOffset) / 100) % phrases.length; // Updated for 100px spacing
+        text(phrases[phraseIndex], x, y);
+      }
+    }
+
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight - 200);
+      for (let square of squares) square.baseY = height / 2;
+    }
   </script>
 </body>
 </html>
