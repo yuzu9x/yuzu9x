@@ -1,4 +1,15 @@
 ======================
+
+Assistive Programs
+
+https://www.w3schools.com/html/ - this beautiful website for when I forget little things 
+Github Copilot - debugging very minor issues, noticed it's not very capable lol. Was helpful for repetitive code areas that were copy paste
+Claude - debugging larger issues and larger scale customization changes specifically a custom cursor animation that I added just for fun hehe
+
+======================
+
+
+======================
 1_Parsons.html Sources
 
 Images sourced from Pinterest. Does not have original creators attached but will provide found sources below:
@@ -6,8 +17,8 @@ https://www.youtube.com/watch?v=G8Veye-N0A4
 https://pin.it/KDQeVIkDV 
 https://pin.it/235oBwRpJ 
 
-
 Gifs sourced from https://gifcities.org/ 
+
 ======================
 
 
@@ -24,6 +35,9 @@ Gifs sourced from https://gifcities.org/
 Closet.html Sources
 
 Sprite, shoes, and socks illustrated by me using Aseprite. 
+Gifs sourced from https://gifcities.org/ 
 Excused how muddy they look I was working on a time crunch and couldn't dedicate myself to proper pixel art.
 
 ======================
+
+
