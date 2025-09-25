@@ -45,6 +45,15 @@
       transform: scale(1.1);
     }
 
+    .title-image {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      width: 900px;
+      height: auto;
+      z-index: 10;
+    }
+
     .wardrobe-button {
       position: fixed;
       width: 250px;
@@ -166,6 +175,7 @@
       .back-button img { width: 100px; height: 100px; }
       .wardrobe-button img { width: 120px; height: 120px; }
       .wardrobe-button { top: 75%; left: 10%; }
+      .title-image { width: 150px; top: 1rem; right: 1rem; }
     }
   </style>
 </head>
@@ -187,6 +197,8 @@
   <div class="canvas-grid">
     <div class="canvas-box" id="canvas1"></div>
   </div>
+
+  <img src="../Fall2025Projects/Fall2025Images/title.png" alt="walking data visualization" class="title-image">
 
   <script>
     // Custom cursor with glitter
